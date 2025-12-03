@@ -140,7 +140,7 @@ button {
 }
 
 button:first-of-type {
-    background-color: var(--klikbaar-color) /* Kerstgroen */
+    background-color: var(--klikbaar-color); /* Kerstgroen */
     color: white;
 }
 
