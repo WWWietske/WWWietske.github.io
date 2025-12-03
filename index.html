@@ -98,7 +98,6 @@
         function generateCalendar() {
             const calendar = document.getElementById("calendar");
             calendar.innerHTML = "";
-
             for (let day = 1; day <= 18; day++) {
                 const dayElement = document.createElement("div");
                 dayElement.className = "day";
@@ -106,60 +105,54 @@
                     <div class="day-number">${day}</div>
                     <div class="day-status"></div>
                 `;
-
-                // Stijl en klikbaarheid
-                if (day < currentDay && currentMonth === 12) {
-                    dayElement.classList.add("past");
-                } else if (day === currentDay && currentMonth === 12) {
-                    dayElement.classList.add("current");
-                } else if (day > currentDay && currentMonth === 12) {
+        
+                // Stijl en klikbaarheid (alleen in december)
+                if (currentMonth === 12) {
+                    if (day < currentDay) {
+                        dayElement.classList.add("past");
+                    } else if (day === currentDay) {
+                        dayElement.classList.add("current");
+                    } else {
+                        dayElement.classList.add("future");
+                    }
+                } else {
+                    // Buiten december: alle dagen "future" (niet klikbaar)
                     dayElement.classList.add("future");
                 }
-
-                // Als de dag al voltooid is (uit localStorage)
+        
+                // Voltooide dagen (uit localStorage)
                 if (localStorage.getItem(`day${day}Completed`)) {
                     dayElement.classList.add("completed");
                     dayElement.querySelector(".day-status").textContent = "✓";
                 }
-
-                // Klikhandler
-                if (day <= currentDay || currentMonth !== 12) {
+        
+                // Klikhandler (alleen voor verleden/hedendaagse dagen in december)
+                if ((day <= currentDay && currentMonth === 12) || currentMonth !== 12) {
                     dayElement.onclick = () => selectDay(day);
                 }
             }
         }
-
-        // Dag selecteren
-        function selectDay(day) {
-            document.getElementById("selectedDay").textContent = `dag ${day}`;
-            document.getElementById("codeInputSection").style.display = "block";
-            document.getElementById("codeInput").dataset.day = day;
-            document.getElementById("codeInput").value = "";
-            document.getElementById("result").textContent = "";
-            document.getElementById("result").className = "";
-        }
-
+        
         // Code controleren
         function checkCode() {
             const input = document.getElementById("codeInput").value.trim().toUpperCase();
             const day = parseInt(document.getElementById("codeInput").dataset.day);
             const resultDiv = document.getElementById("result");
-
-            // Controleer of de code klopt (case-insensitive)
-            if (dayData[day] && input === dayData[day].code.toUpperCase()) {
+        
+            if (dayData[day] && input === dayData[day].code) {  // `code` is al uppercase in dayData
                 resultDiv.textContent = dayData[day].answer;
                 resultDiv.className = "success";
-
+        
                 // Markeer dag als voltooid
-                document.querySelector(`.day:nth-child(${day})`).classList.add("completed");
-                document.querySelector(`.day:nth-child(${day}) .day-status`).textContent = "✓";
+                const dayElement = document.querySelector(`.day:nth-child(${day})`);
+                dayElement.classList.add("completed");
+                dayElement.querySelector(".day-status").textContent = "✓";
                 localStorage.setItem(`day${day}Completed`, "true");
             } else {
                 resultDiv.textContent = "❌ Onjuiste code. Probeer opnieuw!";
                 resultDiv.className = "error";
             }
         }
-
         // Kalender genereren bij laden
         window.onload = generateCalendar;
     </script>
