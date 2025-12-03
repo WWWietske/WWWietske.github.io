@@ -1,14 +1,17 @@
 :root {
-    --klikbaar-color: #003e1f;       /* Kerstgroen */
-    --niet-klikbaar-color: #ba2d0b;  /* Kerstrood */
-    --past-color: #73ba9b;           /* Lichter groen voor verleden */
-    --current-color: #4CAF50;        /* Kerstgroen voor huidige dag */
-    --future-color: #FFCDD2;         /* Lichtrood voor toekomst */
-    --completed-color: #2E7D32;      /* Donkergroen voor voltooid */
-    --success-color: #003e1f;        /* Tekst succesvol ingevuld */
-    --error-color: #ba2d0b;            /* tekst fout ingevuld */
+    /* Kerstkleurenpalet */
+    --kerst-groen: #003e1f;          /* Donkergroen */
+    --kerst-groen-middel: #2E7D32;    /* Middelgroen */
+    --kerst-groen-licht: #4CAF50;     /* Lichtgroen */
+    --kerst-groen-extra-licht: #81C784; /* Extra lichtgroen */
+    --kerst-rood: #ba2d0b;            /* Donkerrood */
+    --kerst-rood-middel: #D32F2F;     /* Middelrood */
+    --kerst-rood-licht: #FFCDD2;      /* Lichtrood */
+    --success-color: var(--kerst-groen);
+    --error-color: var(--kerst-rood);
 }
 
+/* Basistijl */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     max-width: 800px;
@@ -19,17 +22,24 @@ body {
 }
 
 h1 {
-    color: var(--niet-klikbaar-color); /* Kerstrood */
+    color: var(--kerst-rood-middel);
     text-align: center;
     margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+h1::after {
+    content: " 🎄";
 }
 
 p {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.1em;
+    color: #555;
 }
 
+/* Kalender grid */
 .calendar {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -38,6 +48,7 @@ p {
     max-width: 800px;
 }
 
+/* Dag vakjes - basisstijl */
 .day {
     background: #fff;
     border: 1px solid #ddd;
@@ -55,39 +66,42 @@ p {
     font-weight: bold;
 }
 
+/* Hover effect voor klikbare dagen */
 .day:hover:not(.future) {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Klikbare dagen (groen) */
-.day.past,
-.day.current {
-    background-color: var(--klikbaar-color);
+/* Verleden dagen (lichtgroen) */
+.day.past {
+    background-color: var(--kerst-groen-extra-licht);
     color: white;
-    border-color: #388E3C;
+    border-color: var(--kerst-groen-middel);
 }
 
+/* Huidige dag (middelgroen met accent) */
 .day.current {
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+    background-color: var(--kerst-groen-licht);
+    color: white;
+    border: 2px solid var(--kerst-groen-middel);
 }
 
-/* Niet-klikbare dagen (rood) */
+/* Toekomstige dagen (lichtrood) */
 .day.future {
-    background-color: var(--niet-klikbaar-color);
-    color: white;
+    background-color: var(--kerst-rood-licht);
+    color: var(--kerst-rood);
     cursor: not-allowed;
-    border-color: #B71C1C;
-    opacity: 0.9;
+    border-color: var(--kerst-rood-middel);
 }
 
 /* Voltooide dagen (donkergroen) */
 .day.completed {
-    background-color: var(--completed-color);
+    background-color: var(--kerst-groen-middel);
     color: white;
-    border-color: #1B5E20;
+    border-color: var(--kerst-groen);
 }
 
+/* Dag nummer en status */
 .day-number {
     font-size: 1.5em;
     font-weight: bold;
@@ -98,6 +112,7 @@ p {
     margin-top: 5px;
 }
 
+/* Input sectie */
 #codeInputSection {
     margin: 20px auto;
     padding: 20px;
@@ -109,7 +124,7 @@ p {
 }
 
 #codeInputSection h2 {
-    color: #D32F2F;
+    color: var(--kerst-rood-middel);
     margin-top: 0;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
@@ -124,6 +139,7 @@ p {
     font-size: 1em;
 }
 
+/* Knoppen */
 .buttons {
     display: flex;
     gap: 10px;
@@ -136,27 +152,30 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
 }
 
 button:first-of-type {
-    background-color: var(--klikbaar-color); /* Kerstgroen */
+    background-color: var(--kerst-groen-licht);
     color: white;
+    border: 1px solid var(--kerst-groen-middel);
 }
 
 button:first-of-type:hover {
-    background-color: #388E3C;
+    background-color: var(--kerst-groen-middel);
 }
 
 button:last-of-type {
     background-color: #f5f5f5;
-    color: #333;
+    color: var(--kerst-rood-middel);
+    border: 1px solid #ddd;
 }
 
 button:last-of-type:hover {
     background-color: #e0e0e0;
 }
 
+/* Resultaat sectie */
 #result {
     font-weight: bold;
     margin-top: 15px;
@@ -169,37 +188,30 @@ button:last-of-type:hover {
     background-color: rgba(76, 175, 80, 0.2);
     color: var(--success-color);
     display: block !important;
-    border: 1px solid #4CAF50;
+    border: 1px solid var(--kerst-groen-licht);
 }
 
 .error {
     background-color: rgba(211, 47, 47, 0.1);
     color: var(--error-color);
     display: block !important;
-    border: 1px solid #D32F2F;
+    border: 1px solid var(--kerst-rood-middel);
 }
 
+/* Responsive layout */
 @media (max-width: 600px) {
     .calendar {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Extra kerststijl */
-h1 {
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-.day {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-}
-
+/* Subtiele animatie voor huidige dag */
 .day.current {
-    animation: pulse 1.5s infinite;
+    animation: subtlePulse 2s infinite;
 }
 
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+@keyframes subtlePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
 }
