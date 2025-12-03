@@ -101,35 +101,26 @@
             for (let day = 1; day <= 18; day++) {
                 const dayElement = document.createElement("div");
                 dayElement.className = "day";
+                dayElement.setAttribute("data-day", day);  // Voeg data-attribuut toe
                 dayElement.innerHTML = `
                     <div class="day-number">${day}</div>
                     <div class="day-status"></div>
                 `;
-        
-                // Stijl en klikbaarheid (alleen in december)
-                if (currentMonth === 12) {
-                    if (day < currentDay) {
-                        dayElement.classList.add("past");
-                    } else if (day === currentDay) {
-                        dayElement.classList.add("current");
-                    } else {
-                        dayElement.classList.add("future");
-                    }
-                } else {
-                    // Buiten december: alle dagen "future" (niet klikbaar)
+                // Stijl en klikbaarheid
+                if (day < currentDay && currentMonth === 12) {
+                    dayElement.classList.add("past");
+                } else if (day === currentDay && currentMonth === 12) {
+                    dayElement.classList.add("current");
+                } else if (day > currentDay && currentMonth === 12) {
                     dayElement.classList.add("future");
                 }
-        
-                // Voltooide dagen (uit localStorage)
+                // Voltooid uit localStorage
                 if (localStorage.getItem(`day${day}Completed`)) {
                     dayElement.classList.add("completed");
                     dayElement.querySelector(".day-status").textContent = "✓";
                 }
-        
-                // Klikhandler (alleen voor verleden/hedendaagse dagen in december)
-                if ((day <= currentDay && currentMonth === 12) || currentMonth !== 12) {
-                    dayElement.onclick = () => selectDay(day);
-                }
+                // Klikhandler (altijd klikbaar voor testen)
+                dayElement.onclick = () => selectDay(day);
             }
         }
         
