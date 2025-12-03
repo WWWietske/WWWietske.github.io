@@ -1,14 +1,14 @@
 :root {
-    /* Kerstkleurenpalet */
-    --kerst-groen: #003e1f;          /* Donkergroen */
-    --kerst-groen-middel: #2E7D32;    /* Middelgroen */
-    --kerst-groen-licht: #4CAF50;     /* Lichtgroen */
-    --kerst-groen-extra-licht: #81C784; /* Extra lichtgroen */
-    --kerst-rood: #ba2d0b;            /* Donkerrood */
-    --kerst-rood-middel: #D32F2F;     /* Middelrood */
-    --kerst-rood-licht: #FFCDD2;      /* Lichtrood */
+    /* Kerstkleurenpalet - donkere tinten */
+    --kerst-groen: #003e1f;       /* Donkergroen */
+    --kerst-groen-middel: #2E7D32; /* Middelgroen */
+    --kerst-rood: #ba2d0b;        /* Donkerrood */
+    --kerst-rood-middel: #D32F2F; /* Middelrood */
+    --kerst-goud: #FFD700;        /* Goud voor subtiele accenten */
     --success-color: var(--kerst-groen);
     --error-color: var(--kerst-rood);
+    --text-light: #ffffff;       /* Lichte tekst */
+    --text-dark: #333333;        /* Donkere tekst */
 }
 
 /* Basistijl */
@@ -17,44 +17,44 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #f8f8f8;
+    color: var(--text-dark);
 }
 
+/* Kopstijl */
 h1 {
-    color: var(--kerst-rood-middel);
+    color: var(--kerst-rood);
     text-align: center;
     margin-bottom: 10px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-weight: 700;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-h1::after {
-    content: " 🎄";
-}
-
+/* Tekststijl */
 p {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.1em;
-    color: #555;
+    color: var(--text-dark);
+    line-height: 1.5;
 }
 
 /* Kalender grid */
 .calendar {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    margin: 20px auto;
+    gap: 12px;
+    margin: 25px auto;
     max-width: 800px;
 }
 
 /* Dag vakjes - basisstijl */
 .day {
     background: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
+    border: 1px solid #ccc;
+    padding: 12px 5px;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     aspect-ratio: 1;
     display: flex;
@@ -62,112 +62,125 @@ p {
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
 }
 
 /* Hover effect voor klikbare dagen */
 .day:hover:not(.future) {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Verleden dagen (lichtgroen) */
+/* Verleden dagen (donkergroen) */
 .day.past {
-    background-color: var(--kerst-groen-extra-licht);
-    color: white;
+    background-color: var(--kerst-groen);
+    color: var(--text-light);
     border-color: var(--kerst-groen-middel);
 }
 
-/* Huidige dag (middelgroen met accent) */
+/* Huidige dag (donkergroen met licht accent) */
 .day.current {
-    background-color: var(--kerst-groen);
-    color: white;
-    border: 2px solid var(--kerst-groen-middel);
+    background-color: var(--kerst-groen-middel);
+    color: var(--text-light);
+    border: 2px solid var(--kerst-groen);
+    box-shadow: 0 0 0 1px var(--kerst-groen-middel);
 }
 
-/* Toekomstige dagen (lichtrood) */
+/* Toekomstige dagen (donkerrood) */
 .day.future {
-    background-color: var(--kerst-rood-licht);
-    color: var(--kerst-rood);
+    background-color: var(--kerst-rood);
+    color: var(--text-light);
     cursor: not-allowed;
     border-color: var(--kerst-rood-middel);
 }
 
-/* Voltooide dagen (donkergroen) */
+/* Voltooide dagen (donkergroen met vinkje) */
 .day.completed {
-    background-color: var(--kerst-groen-middel);
-    color: white;
-    border-color: var(--kerst-groen);
+    background-color: var(--kerst-groen);
+    color: var(--text-light);
+    border: 2px solid var(--kerst-goud);
 }
 
 /* Dag nummer en status */
 .day-number {
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 3px;
 }
 
 .day-status {
-    font-size: 0.9em;
-    margin-top: 5px;
+    font-size: 0.8em;
+    margin-top: 2px;
 }
 
 /* Input sectie */
 #codeInputSection {
-    margin: 20px auto;
-    padding: 20px;
+    margin: 25px auto;
+    padding: 25px;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: none;
     max-width: 600px;
+    border: 1px solid #eee;
 }
 
 #codeInputSection h2 {
-    color: var(--kerst-rood-middel);
+    color: var(--kerst-rood);
     margin-top: 0;
     border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
+    font-size: 1.3em;
 }
 
+/* Input veld */
 #codeInput {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
+    transition: border-color 0.2s;
+}
+
+#codeInput:focus {
+    border-color: var(--kerst-groen-middel);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
 }
 
 /* Knoppen */
 .buttons {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 15px;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
     transition: all 0.2s;
+    font-size: 0.9em;
 }
 
 button:first-of-type {
-    background-color: var(--kerst-groen-licht);
-    color: white;
-    border: 1px solid var(--kerst-groen-middel);
+    background-color: var(--kerst-groen-middel);
+    color: var(--text-light);
+    border: 1px solid var(--kerst-groen);
 }
 
 button:first-of-type:hover {
-    background-color: var(--kerst-groen-middel);
+    background-color: var(--kerst-groen);
 }
 
 button:last-of-type {
     background-color: #f5f5f5;
-    color: var(--kerst-rood-middel);
+    color: var(--kerst-rood);
     border: 1px solid #ddd;
 }
 
@@ -177,41 +190,59 @@ button:last-of-type:hover {
 
 /* Resultaat sectie */
 #result {
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 15px;
-    padding: 12px;
+    padding: 15px;
     border-radius: 4px;
     display: none;
+    line-height: 1.4;
 }
 
 .success {
-    background-color: rgba(76, 175, 80, 0.2);
-    color: var(--success-color);
-    display: block !important;
-    border: 1px solid var(--kerst-groen-licht);
+    background-color: rgba(46, 125, 50, 0.1);
+    color: var(--kerst-groen);
+    display: block;
+    border: 1px solid var(--kerst-groen-middel);
+    border-left: 4px solid var(--kerst-groen);
 }
 
 .error {
-    background-color: rgba(211, 47, 47, 0.1);
-    color: var(--error-color);
-    display: block !important;
+    background-color: rgba(186, 45, 11, 0.1);
+    color: var(--kerst-rood);
+    display: block;
     border: 1px solid var(--kerst-rood-middel);
+    border-left: 4px solid var(--kerst-rood);
 }
 
 /* Responsive layout */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .calendar {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-/* Subtiele animatie voor huidige dag */
-.day.current {
-    animation: subtlePulse 2s infinite;
+@media (max-width: 480px) {
+    .calendar {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .day-number {
+        font-size: 1.4em;
+    }
 }
 
-@keyframes subtlePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
+/* Subtiele animatie voor interactie */
+.day.current {
+    position: relative;
+}
+
+.day.current::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--kerst-goud);
+    border-radius: 0 0 4px 4px;
 }
