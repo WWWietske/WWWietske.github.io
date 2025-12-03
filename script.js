@@ -25,7 +25,7 @@ const today = new Date();
 const currentDay = today.getDate();
 const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
 
-// Kalender genereren (alleen huidige en vorige dagen zijn klikbaar)
+// Kalender genereren (dag 7 altijd beschikbaar, rest volgens datumlogica)
 function generateCalendar() {
     const calendar = document.getElementById("calendar");
     calendar.innerHTML = "";
@@ -34,26 +34,29 @@ function generateCalendar() {
     for (let day = 7; day <= 24; day++) {
         const dayElement = document.createElement("div");
         dayElement.className = "day";
-
-        // Bepaal de status van de dag (verleden, huidige dag, toekomst)
-        if (currentMonth === 12) {
-            if (day < currentDay) {
-                dayElement.classList.add("past"); // Verleden (roze)
-            } else if (day === currentDay) {
-                dayElement.classList.add("current"); // Huidige dag (blauw)
-            } else {
-                dayElement.classList.add("future"); // Toekomst (grijs, niet klikbaar)
-            }
-        } else {
-            // Als het niet december is, maak alle dagen klikbaar voor testen
-            dayElement.classList.add("current");
-        }
-
         dayElement.setAttribute("data-day", day);
         dayElement.innerHTML = `
             <div class="day-number">${day}</div>
             <div class="day-status"></div>
         `;
+
+        // Speciale behandeling voor dag 7 (altijd beschikbaar)
+        if (day === 7) {
+            dayElement.classList.add("current");
+        }
+        // Normale datumlogica voor andere dagen
+        else if (currentMonth === 12) {
+            if (day < currentDay) {
+                dayElement.classList.add("past");
+            } else if (day === currentDay) {
+                dayElement.classList.add("current");
+            } else {
+                dayElement.classList.add("future");
+            }
+        } else {
+            // Als het niet december is, maak alle dagen (behalve dag 7) grijs voor testen
+            dayElement.classList.add("future");
+        }
 
         // Voltooid uit localStorage
         if (localStorage.getItem(`day${day}Completed`)) {
@@ -61,14 +64,14 @@ function generateCalendar() {
             dayElement.querySelector(".day-status").textContent = "✓";
         }
 
-        // Klikhandler alleen voor huidige en vorige dagen
-        if ((currentMonth === 12 && day <= currentDay) || currentMonth !== 12) {
+        // Klikhandler voor dag 7 (altijd) en voor andere dagen volgens datumlogica
+        if (day === 7 || (currentMonth === 12 && day <= currentDay) || currentMonth !== 12) {
             dayElement.onclick = () => selectDay(day);
         }
 
         calendar.appendChild(dayElement);
     }
-    console.log(`Kalender gegenereerd: vandaag is ${currentDay} december (als het december is).`);
+    console.log(`Kalender gegenereerd: dag 7 is altijd beschikbaar, vandaag is ${currentDay} december (als het december is).`);
 }
 
 // Dag selecteren
