@@ -5,8 +5,8 @@
     --current-color: #4CAF50;        /* Kerstgroen voor huidige dag */
     --future-color: #FFCDD2;         /* Lichtrood voor toekomst */
     --completed-color: #2E7D32;      /* Donkergroen voor voltooid */
-    --success-color: #d5f2e3;
-    --error-color: #ba2d0b;
+    --success-color: #003e1f;        /* Tekst succesvol ingevuld */
+    --error-color: #ba2d0b;            /* tekst fout ingevuld */
 }
 
 body {
