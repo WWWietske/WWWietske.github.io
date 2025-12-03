@@ -96,17 +96,24 @@
 
         // Kalender genereren
         function generateCalendar() {
+            console.log("generateCalendar() draait!");
             const calendar = document.getElementById("calendar");
             calendar.innerHTML = "";
+        
+            // Tijdelijke hardcoded waarden voor testen (verwijder in productie!)
+            const currentMonth = 12; // December
+            const currentDay = 1;    // Dag 1 is "vandaag"
+        
             for (let day = 1; day <= 18; day++) {
                 const dayElement = document.createElement("div");
                 dayElement.className = "day";
-                dayElement.setAttribute("data-day", day);  // Voeg data-attribuut toe
+                dayElement.setAttribute("data-day", day);
                 dayElement.innerHTML = `
                     <div class="day-number">${day}</div>
                     <div class="day-status"></div>
                 `;
-                // Stijl en klikbaarheid
+        
+                // Stijl toevoegen
                 if (day < currentDay && currentMonth === 12) {
                     dayElement.classList.add("past");
                 } else if (day === currentDay && currentMonth === 12) {
@@ -114,14 +121,26 @@
                 } else if (day > currentDay && currentMonth === 12) {
                     dayElement.classList.add("future");
                 }
-                // Voltooid uit localStorage
-                if (localStorage.getItem(`day${day}Completed`)) {
-                    dayElement.classList.add("completed");
-                    dayElement.querySelector(".day-status").textContent = "✓";
+        
+                // Voltooid uit localStorage (met error handling)
+                try {
+                    if (localStorage.getItem(`day${day}Completed`)) {
+                        dayElement.classList.add("completed");
+                        dayElement.querySelector(".day-status").textContent = "✓";
+                    }
+                } catch (e) {
+                    console.error("Fout bij localStorage:", e);
                 }
+        
                 // Klikhandler (altijd klikbaar voor testen)
-                dayElement.onclick = () => selectDay(day);
+                dayElement.onclick = () => {
+                    console.log(`Dag ${day} geklikt!`);
+                    selectDay(day);
+                };
+        
+                calendar.appendChild(dayElement);
             }
+            console.log("Dagen gegenereerd:", document.querySelectorAll(".day").length);
         }
         
         // Code controleren
