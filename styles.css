@@ -1,12 +1,12 @@
 :root {
-    --klikbaar-color: #4CAF50;       /* Kerstgroen */
-    --niet-klikbaar-color: #D32F2F;  /* Kerstrood */
-    --past-color: #81C784;           /* Lichter groen voor verleden */
+    --klikbaar-color: #003e1f;       /* Kerstgroen */
+    --niet-klikbaar-color: #ba2d0b;  /* Kerstrood */
+    --past-color: #73ba9b;           /* Lichter groen voor verleden */
     --current-color: #4CAF50;        /* Kerstgroen voor huidige dag */
     --future-color: #FFCDD2;         /* Lichtrood voor toekomst */
     --completed-color: #2E7D32;      /* Donkergroen voor voltooid */
-    --success-color: #2E7D32;
-    --error-color: #C62828;
+    --success-color: #d5f2e3;
+    --error-color: #ba2d0b;
 }
 
 body {
