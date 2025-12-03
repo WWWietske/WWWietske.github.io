@@ -20,7 +20,12 @@ const dayData = {
     24:  { code: "KADO",   answer: "🎁🎉 Gefeliciteerd! De finale is onder de tafel. Proost! 🍾" }
 };
 
-// Kalender genereren (ALLE dagen 7 t/m 24 december zijn zichtbaar en klikbaar)
+// Huidige datum bepalen
+const today = new Date();
+const currentDay = today.getDate();
+const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
+
+// Kalender genereren (alleen huidige en vorige dagen zijn klikbaar)
 function generateCalendar() {
     const calendar = document.getElementById("calendar");
     calendar.innerHTML = "";
@@ -28,7 +33,22 @@ function generateCalendar() {
     // Genereer dagen 7 t/m 24 december
     for (let day = 7; day <= 24; day++) {
         const dayElement = document.createElement("div");
-        dayElement.className = "day current"; // ALLE dagen zijn "current" (blauw en klikbaar)
+        dayElement.className = "day";
+
+        // Bepaal de status van de dag (verleden, huidige dag, toekomst)
+        if (currentMonth === 12) {
+            if (day < currentDay) {
+                dayElement.classList.add("past"); // Verleden (roze)
+            } else if (day === currentDay) {
+                dayElement.classList.add("current"); // Huidige dag (blauw)
+            } else {
+                dayElement.classList.add("future"); // Toekomst (grijs, niet klikbaar)
+            }
+        } else {
+            // Als het niet december is, maak alle dagen klikbaar voor testen
+            dayElement.classList.add("current");
+        }
+
         dayElement.setAttribute("data-day", day);
         dayElement.innerHTML = `
             <div class="day-number">${day}</div>
@@ -41,11 +61,14 @@ function generateCalendar() {
             dayElement.querySelector(".day-status").textContent = "✓";
         }
 
-        // Klikhandler
-        dayElement.onclick = () => selectDay(day);
+        // Klikhandler alleen voor huidige en vorige dagen
+        if ((currentMonth === 12 && day <= currentDay) || currentMonth !== 12) {
+            dayElement.onclick = () => selectDay(day);
+        }
+
         calendar.appendChild(dayElement);
     }
-    console.log("Kalender gegenereerd: dagen 7 t/m 24 december zijn zichtbaar!");
+    console.log(`Kalender gegenereerd: vandaag is ${currentDay} december (als het december is).`);
 }
 
 // Dag selecteren
