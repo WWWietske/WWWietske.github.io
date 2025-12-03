@@ -81,7 +81,7 @@ p {
 
 /* Huidige dag (middelgroen met accent) */
 .day.current {
-    background-color: var(--kerst-groen-licht);
+    background-color: var(--kerst-groen);
     color: white;
     border: 2px solid var(--kerst-groen-middel);
 }
