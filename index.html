@@ -1,41 +1,151 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
+    <meta charset="UTF-8">
+    <title>Adventkalender Escape Puzzels</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
         .calendar {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 1fr;
             gap: 10px;
             margin: 20px 0;
-            min-height: 300px; /* Vaste hoogte voor test */
-            background: #eee;
-            padding: 10px;
         }
         .day {
             background: #fff;
             border: 1px solid #ddd;
-            height: 80px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            aspect-ratio: 1;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
         }
+        .day.past { background: #ffebee; }
+        .day.current { background: #e3f2fd; font-weight: bold; }
+        .day.future { background: #e8e8e8; color: #999; cursor: not-allowed; }
+        .day.completed { background: #e8f5e9; }
+        .day-number { font-size: 1.2em; }
+        .day-status { font-size: 0.8em; margin-top: 5px; }
+        #codeInputSection {
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success { background: #e8f5e9; color: #2e7d32; }
+        .error { background: #ffebee; color: #c62828; }
     </style>
 </head>
 <body>
-    <h1>Test Kalender</h1>
+    <h1>Adventkalender Escape Puzzels</h1>
+    <p>Klik op een dag, vul de code in en ontvang een unieke hint of antwoord!</p>
+
     <div class="calendar" id="calendar"></div>
+
+    <div id="codeInputSection">
+        <h2>Code voor <span id="selectedDay"></span></h2>
+        <input type="text" id="codeInput" placeholder="Voer de code in" autocomplete="off">
+        <button onclick="checkCode()">Controleer</button>
+        <div id="result"></div>
+    </div>
+
     <script>
-        window.onload = function() {
+        // Object met codes en bijbehorende unieke antwoorden/hints per dag
+        const dayData = {
+            1:  { code: "SNEEUW", answer: "🔑 De sleutel ligt onder de kerstboom." },
+            2:  { code: "KAARS",  answer: "🕯️ Zoek bij het licht..." },
+            3:  { code: "STER",   answer: "⭐ Kijk omhoog, naar de top van de boom." },
+            4:  { code: "BEL",    answer: "🔔 Luister goed: het geluid komt uit de keuken." },
+            5:  { code: "KRANS",  answer: "🌿 Check de deur waar de krans hangt." },
+            6:  { code: "PAKJE",  answer: "🎁 Het kleinste pakje bevat een aanwijzing." },
+            7:  { code: "ELF",    answer: "🧝‍♂️ De elf heeft iets verstopt in de boekenkast." },
+            8:  { code: "LIED",   answer: "🎵 Zing het derde couplet van 'Stille Nacht' hardop." },
+            9:  { code: "KOOKIE", answer: "🍪 Er zit een briefje in de koekjestrommel." },
+            10: { code: "LINT",   answer: "🎀 Het rode lint leidt naar de volgende puzzel." },
+            11: { code: "KALF",   answer: "🐄 Zoek waar het kerstkalfje staat (schuur?)." },
+            12: { code: "WENS",   answer: "✨ Schrijf je kerstwens op en draai hem om." },
+            13: { code: "IJS",    answer: "❄️ In de vriezer ligt meer dan alleen ijs..." },
+            14: { code: "KLOK",   answer: "⏰ Stel de klok in op 24:00 en kijk wat er gebeurt." },
+            15: { code: "HERT",   answer: "🦌 Volg de rendiersporen naar de zolder." },
+            16: { code: "KAART",  answer: "🗺️ De kerstkaart van oma bevat een geheime boodschap." },
+            17: { code: "VUUR",   answer: "🔥 Warm je handen bij de open haard - kijk in de as." },
+            18: { code: "FEEST",  answer: "🎉 Gefeliciteerd! De finale is onder de tafel. Proost!" }
+        };
+
+        // Huidige datum
+        const today = new Date();
+        const currentDay = today.getDate();
+        const currentMonth = today.getMonth() + 1; // December = 12
+
+        // Kalender genereren
+        function generateCalendar() {
             const calendar = document.getElementById("calendar");
+            calendar.innerHTML = "";
             for (let day = 1; day <= 18; day++) {
                 const dayElement = document.createElement("div");
                 dayElement.className = "day";
-                dayElement.textContent = day;
-                calendar.appendChild(dayElement);
+                dayElement.setAttribute("data-day", day);  // Voeg data-attribuut toe
+                dayElement.innerHTML = `
+                    <div class="day-number">${day}</div>
+                    <div class="day-status"></div>
+                `;
+                // Stijl en klikbaarheid
+                if (day < currentDay && currentMonth === 12) {
+                    dayElement.classList.add("past");
+                } else if (day === currentDay && currentMonth === 12) {
+                    dayElement.classList.add("current");
+                } else if (day > currentDay && currentMonth === 12) {
+                    dayElement.classList.add("future");
+                }
+                // Voltooid uit localStorage
+                if (localStorage.getItem(`day${day}Completed`)) {
+                    dayElement.classList.add("completed");
+                    dayElement.querySelector(".day-status").textContent = "✓";
+                }
+                // Klikhandler (altijd klikbaar voor testen)
+                dayElement.onclick = () => selectDay(day);
             }
-            console.log("Dagen gegenereerd:", document.querySelectorAll(".day").length);
-        };
+        }
+        
+        // Code controleren
+        function checkCode() {
+            const input = document.getElementById("codeInput").value.trim().toUpperCase();
+            const day = parseInt(document.getElementById("codeInput").dataset.day);
+            const resultDiv = document.getElementById("result");
+        
+            if (dayData[day] && input === dayData[day].code) {  // `code` is al uppercase in dayData
+                resultDiv.textContent = dayData[day].answer;
+                resultDiv.className = "success";
+        
+                // Markeer dag als voltooid
+                const dayElement = document.querySelector(`.day:nth-child(${day})`);
+                dayElement.classList.add("completed");
+                dayElement.querySelector(".day-status").textContent = "✓";
+                localStorage.setItem(`day${day}Completed`, "true");
+            } else {
+                resultDiv.textContent = "❌ Onjuiste code. Probeer opnieuw!";
+                resultDiv.className = "error";
+            }
+        }
+        // Kalender genereren bij laden
+        window.onload = generateCalendar;
     </script>
 </body>
 </html>
