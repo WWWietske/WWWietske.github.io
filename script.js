@@ -1,23 +1,23 @@
 // Object met codes en bijbehorende hints per dag (7 t/m 24 december)
 const dayData = {
-    7:   { code: "SNEEUW", answer: "🔑 De sleutel ligt onder de kerstboom. <br>Hint voor morgen: Zoek iets dat brandt..." },
-    8:   { code: "KAARS",  answer: "🕯️ Zoek bij het licht... <br>Hint voor morgen: Kijk omhoog!" },
-    9:   { code: "STER",   answer: "⭐ Kijk omhoog, naar de top van de boom. <br>Hint voor morgen: Luister goed..." },
-    10:  { code: "BEL",    answer: "🔔 Luister goed: het geluid komt uit de keuken. <br>Hint voor morgen: Check de deur..." },
-    11:  { code: "KRANS",  answer: "🌿 Check de deur waar de krans hangt. <br>Hint voor morgen: Het kleinste pakje..." },
-    12:  { code: "PAKJE",  answer: "🎁 Het kleinste pakje bevat een aanwijzing. <br>Hint voor morgen: Zoek een magisch wezen..." },
-    13:  { code: "ELF",    answer: "🧝‍♂️ De elf heeft iets verstopt in de boekenkast. <br>Hint voor morgen: Zing een liedje..." },
-    14:  { code: "LIED",   answer: "🎵 Zing het derde couplet van 'Stille Nacht' hardop. <br>Hint voor morgen: Zoek iets lekkers..." },
-    15:  { code: "KOOKIE", answer: "🍪 Er zit een briefje in de koekjestrommel. <br>Hint voor morgen: Kijk naar iets roods..." },
-    16:  { code: "LINT",   answer: "🎀 Het rode lint leidt naar de volgende puzzel. <br>Hint voor morgen: Zoek een dier..." },
-    17:  { code: "KALF",   answer: "🐄 Zoek waar het kerstkalfje staat (schuur?). <br>Hint voor morgen: Schrijf iets op..." },
-    18:  { code: "WENS",   answer: "✨ Schrijf je kerstwens op en draai hem om. <br>Hint voor morgen: Open de vriezer..." },
-    19:  { code: "IJS",    answer: "❄️ In de vriezer ligt meer dan alleen ijs... <br>Hint voor morgen: Kijk naar de tijd..." },
-    20:  { code: "KLOK",   answer: "⏰ Stel de klok in op 24:00 en kijk wat er gebeurt. <br>Hint voor morgen: Volg sporen..." },
-    21:  { code: "HERT",   answer: "🦌 Volg de rendiersporen naar de zolder. <br>Hint voor morgen: Kijk naar een kaart..." },
-    22:  { code: "KAART",  answer: "🗺️ De kerstkaart van oma bevat een geheime boodschap. <br>Hint voor morgen: Warm je handen..." },
-    23:  { code: "VUUR",   answer: "🔥 Warm je handen bij de open haard - kijk in de as. <br>Hint voor morgen: Vier feest!" },
-    24:  { code: "KADO",   answer: "🎁🎉 Gefeliciteerd! De finale is onder de tafel. Proost! 🍾" }
+    7:   { code: "SNEEUW",   symbol: "sok.png",          answer: "De sleutel ligt onder de kerstboom.",                     hint: "Zoek iets warms om te drinken..." },
+    8:   { code: "KAARS",    symbol: "thee.png",         answer: "Zoek bij de theepot in de keuken.",                      hint: "Kijk in de kerstboom..." },
+    9:   { code: "STER",     symbol: "kerstbal.png",     answer: "De kerstbal hangt aan de linkerkant van de boom.",        hint: "Zoek iets zoets..." },
+    10:  { code: "BEL",      symbol: "zuurstok.png",     answer: "De zuurstok ligt in de snoepkom.",                       hint: "Kijk naar een plant..." },
+    11:  { code: "KRANS",    symbol: "takblaadje.png",   answer: "Het blaadje ligt bij de kerstkrans aan de deur.",         hint: "Zoek een mini-huisje..." },
+    12:  { code: "PAKJE",    symbol: "huis.png",         answer: "Het kersthuisje staat op de schouw.",                    hint: "Kijk onder de kersttrui..." },
+    13:  { code: "ELF",      symbol: "truistrik.png",    answer: "De strik zit aan de kersttrui in de kast.",              hint: "Zoek een kerstboom van papier..." },
+    14:  { code: "LIED",     symbol: "truiboom.png",     answer: "De papieren kerstboom hangt aan de koelkast.",           hint: "Zoek een dier dat van kou houdt..." },
+    15:  { code: "KOOKIE",   symbol: "ijsbeer.png",      answer: "De ijsbeer staat op de boekenplank.",                    hint: "Zoek een zwart-wit dier..." },
+    16:  { code: "LINT",     symbol: "pinguin.png",      answer: "De pinguïn staat naast de tv.",                         hint: "Bouw iets met sneeuw..." },
+    17:  { code: "KALF",     symbol: "sneeuwpop.png",    answer: "De sneeuwpop staat in de tuin (of op een foto).",        hint: "Zoek een sluwe vos..." },
+    18:  { code: "WENS",     symbol: "vosje.png",        answer: "Het vosje zit verstopt in de kerststal.",               hint: "Zoek iets lekkers om op te eten..." },
+    19:  { code: "IJS",      symbol: "koekemannetje.png", answer: "Het koekemannetje hangt aan het raam.",                hint: "Kijk naar kleine boompjes..." },
+    20:  { code: "KLOK",     symbol: "boompjes.png",     answer: "De mini-boompjes staan op de vensterbank.",            hint: "Zoek rode bessen..." },
+    21:  { code: "HERT",     symbol: "takjebessen.png",  answer: "De tak met bessen ligt op tafel.",                     hint: "Houd je handen warm..." },
+    22:  { code: "KAART",    symbol: "wanten.png",       answer: "De wanten hangen bij de deur.",                         hint: "Zet iets op je hoofd..." },
+    23:  { code: "VUUR",     symbol: "muts.png",         answer: "De muts ligt op de bank.",                              hint: "Morgen is het kerst!" },
+    24:  { code: "KADO",     symbol: "cadeau.png",       answer: "Gefeliciteerd! Het laatste cadeau ligt onder de tafel.", hint: "" }
 };
 
 // Huidige datum bepalen
@@ -30,50 +30,48 @@ function generateCalendar() {
     const calendar = document.getElementById("calendar");
     calendar.innerHTML = "";
 
-    // Genereer dagen 7 t/m 24 december
     for (let day = 7; day <= 24; day++) {
         const dayElement = document.createElement("div");
         dayElement.className = "day";
         dayElement.setAttribute("data-day", day);
+
         dayElement.innerHTML = `
             <div class="day-number">${day}</div>
+            <div class="day-symbol"></div>
             <div class="day-status"></div>
         `;
 
-        // Speciale behandeling voor dag 7 (altijd beschikbaar)
+        // Logica voor verleden/heden/toekomst
         if (day === 7) {
             dayElement.classList.add("current");
-        }
-        // Normale datumlogica voor andere dagen
-        else if (currentMonth === 12) {
-            if (day < currentDay) {
-                dayElement.classList.add("past");
-            } else if (day === currentDay) {
-                dayElement.classList.add("current");
-            } else {
-                dayElement.classList.add("future");
-            }
+        } else if (currentMonth === 12) {
+            if (day < currentDay) dayElement.classList.add("past");
+            else if (day === currentDay) dayElement.classList.add("current");
+            else dayElement.classList.add("future");
         } else {
-            // Als het niet december is, maak alle dagen (behalve dag 7) grijs voor testen
             dayElement.classList.add("future");
         }
 
-        // Voltooid uit localStorage
+        // Als de dag voltooid is: toon het symbool
         if (localStorage.getItem(`day${day}Completed`)) {
             dayElement.classList.add("completed");
             dayElement.querySelector(".day-status").textContent = "✓";
+
+            const symbolImg = document.createElement("img");
+            symbolImg.src = `symbols/${dayData[day].symbol}`;
+            symbolImg.alt = `Symbool dag ${day}`;
+            symbolImg.className = "symbol-img";
+            dayElement.querySelector(".day-symbol").appendChild(symbolImg);
         }
 
-        // Klikhandler voor dag 7 (altijd) en voor andere dagen volgens datumlogica
+        // Klikhandler
         if (day === 7 || (currentMonth === 12 && day <= currentDay) || currentMonth !== 12) {
             dayElement.onclick = () => selectDay(day);
         }
 
         calendar.appendChild(dayElement);
     }
-    console.log(`Kalender gegenereerd: dag 7 is altijd beschikbaar, vandaag is ${currentDay} december (als het december is).`);
 }
-
 // Dag selecteren
 function selectDay(day) {
     document.getElementById("selectedDay").textContent = `dag ${day} december`;
@@ -96,19 +94,41 @@ function checkCode() {
     const resultDiv = document.getElementById("result");
 
     if (dayData[day] && input === dayData[day].code) {
-        resultDiv.innerHTML = dayData[day].answer;
+        // Toon het antwoord + hint voor morgen
+        resultDiv.innerHTML = `
+            <img src="symbols/${dayData[day].symbol}" alt="symbool" class="symbol-img">
+            ${dayData[day].answer} <br>
+            <strong>Hint voor morgen:</strong> ${dayData[day].hint}
+        `;
         resultDiv.className = "success";
 
         // Markeer dag als voltooid
-        const dayElement = document.querySelector(`.day[data-day="${day}"]`);
-        dayElement.classList.add("completed");
-        dayElement.querySelector(".day-status").textContent = "✓";
         localStorage.setItem(`day${day}Completed`, "true");
+
+        // **Toon het symbool van de volgende dag in de kalender (met animatie)**
+        if (day < 24) {
+            const nextDay = day + 1;
+            const nextDayElement = document.querySelector(`.day[data-day="${nextDay}"]`);
+            if (nextDayElement) {
+                const symbolImg = document.createElement("img");
+                symbolImg.src = `symbols/${dayData[nextDay].symbol}`;
+                symbolImg.alt = `Symbool dag ${nextDay}`;
+                symbolImg.className = "symbol-img new-symbol"; // Animatie-class
+                nextDayElement.querySelector(".day-symbol").appendChild(symbolImg);
+
+                // Verwijder de animatie-class na afspelen
+                setTimeout(() => {
+                    symbolImg.classList.remove("new-symbol");
+                }, 500);
+            }
+        }
+
+        // Vernieuw de kalender
+        generateCalendar();
     } else {
         resultDiv.textContent = "❌ Onjuiste code. Probeer opnieuw!";
         resultDiv.className = "error";
     }
 }
-
 // Kalender genereren bij laden
 document.addEventListener('DOMContentLoaded', generateCalendar);
