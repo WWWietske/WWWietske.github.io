@@ -145,7 +145,6 @@ function generateCalendar() {
 
         dayElement.innerHTML = `
             <div class="day-number">${day}</div>
-            <div class="day-symbol"></div>
             <div class="day-status"></div>
         `;
 
@@ -160,15 +159,11 @@ function generateCalendar() {
             dayElement.classList.add("future");
         }
 
-        // Als de dag voltooid is: toon het symbool
+        // Als de dag voltooid is: gebruik symbool als achtergrond
         if (localStorage.getItem(`day${day}Completed`)) {
             dayElement.classList.add("completed");
             dayElement.querySelector(".day-status").textContent = "✓";
-
-            const symbolImg = document.createElement("img");
-            symbolImg.src = `symbols/${dayData[day].symbol}`;
-            symbolImg.alt = `Symbool dag ${day}`;
-            dayElement.querySelector(".day-symbol").appendChild(symbolImg);
+            dayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
         }
 
         // Klikhandler
@@ -204,14 +199,10 @@ function checkCode() {
     if (dayData[day] && input === dayData[day].code) {
         // Toon het antwoord + het nextSymbol (symbool van de volgende dag)
         const nextDay = day + 1;
-        const hasNextDay = nextDay <= 24; // Controleer of er een volgende dag is
+        const hasNextDay = nextDay <= 24;
 
-        // Bouw het antwoord op
-        let resultHTML = `
-            ${dayData[day].answer}
-        `;
+        let resultHTML = `${dayData[day].answer}`;
 
-        // Voeg nextSymbol en hint toe als er een volgende dag is
         if (hasNextDay && dayData[day].nextSymbol) {
             resultHTML += `
                 <br><br>
@@ -223,7 +214,6 @@ function checkCode() {
             `;
         }
 
-        // Speciale tekst voor dag 24
         if (day === 24) {
             resultHTML += `<br><br><strong>🎉 Gefeliciteerd! Je hebt alle dagen voltooid! 🎄🎁</strong>`;
         }
@@ -234,30 +224,20 @@ function checkCode() {
         // Markeer dag als voltooid
         localStorage.setItem(`day${day}Completed`, "true");
 
-        // Toon het symbool van de huidige dag in de kalender (als dat nog niet gebeurd is)
+        // Update de achtergrond van de huidige dag
         const currentDayElement = document.querySelector(`.day[data-day="${day}"]`);
-        if (currentDayElement && !currentDayElement.querySelector(".day-symbol img")) {
-            const symbolImg = document.createElement("img");
-            symbolImg.src = `symbols/${dayData[day].symbol}`;
-            symbolImg.alt = `Symbool dag ${day}`;
-            symbolImg.style.opacity = "1";
-            currentDayElement.querySelector(".day-symbol").appendChild(symbolImg);
+        if (currentDayElement) {
+            currentDayElement.classList.add("completed");
+            currentDayElement.querySelector(".day-status").textContent = "✓";
+            currentDayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
         }
 
-        // Toon het symbool van de VOLGENDE dag in de kalender (als die bestaat)
+        // Toon het symbool van de VOLGENDE dag in de kalender
         if (hasNextDay) {
             const nextDayElement = document.querySelector(`.day[data-day="${nextDay}"]`);
-            if (nextDayElement && !nextDayElement.querySelector(".day-symbol img")) {
-                const nextSymbolImg = document.createElement("img");
-                nextSymbolImg.src = `symbols/${dayData[nextDay].symbol}`;
-                nextSymbolImg.alt = `Symbool dag ${nextDay}`;
-                nextSymbolImg.className = "new-symbol";
-                nextDayElement.querySelector(".day-symbol").appendChild(nextSymbolImg);
-
-                // Verwijder animatie-class na afspelen
-                setTimeout(() => {
-                    nextSymbolImg.classList.remove("new-symbol");
-                }, 500);
+            if (nextDayElement) {
+                // Voeg een tijdelijk symbool toe als preview (optioneel)
+                // Dit is niet nodig als je alleen de achtergrond wilt updaten bij voltooiing
             }
         }
 
@@ -268,5 +248,6 @@ function checkCode() {
         resultDiv.className = "error";
     }
 }
+
 // Kalender genereren bij laden
 document.addEventListener('DOMContentLoaded', generateCalendar);
