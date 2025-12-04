@@ -25,7 +25,7 @@ const today = new Date();
 const currentDay = today.getDate();
 const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
 
-// Kalender genereren (dag 7 altijd beschikbaar, rest volgens datumlogica)
+// Kalender genereren
 function generateCalendar() {
     const calendar = document.getElementById("calendar");
     calendar.innerHTML = "";
@@ -60,7 +60,6 @@ function generateCalendar() {
             const symbolImg = document.createElement("img");
             symbolImg.src = `symbols/${dayData[day].symbol}`;
             symbolImg.alt = `Symbool dag ${day}`;
-            symbolImg.className = "symbol-img";
             dayElement.querySelector(".day-symbol").appendChild(symbolImg);
         }
 
@@ -72,6 +71,7 @@ function generateCalendar() {
         calendar.appendChild(dayElement);
     }
 }
+
 // Dag selecteren
 function selectDay(day) {
     document.getElementById("selectedDay").textContent = `dag ${day} december`;
@@ -94,7 +94,6 @@ function checkCode() {
     const resultDiv = document.getElementById("result");
 
     if (dayData[day] && input === dayData[day].code) {
-        // Toon het antwoord + hint voor morgen
         resultDiv.innerHTML = `
             <img src="symbols/${dayData[day].symbol}" alt="symbool" class="symbol-img">
             ${dayData[day].answer} <br>
@@ -105,7 +104,7 @@ function checkCode() {
         // Markeer dag als voltooid
         localStorage.setItem(`day${day}Completed`, "true");
 
-        // **Toon het symbool van de volgende dag in de kalender (met animatie)**
+        // Toon het symbool van de volgende dag in de kalender
         if (day < 24) {
             const nextDay = day + 1;
             const nextDayElement = document.querySelector(`.day[data-day="${nextDay}"]`);
@@ -113,10 +112,10 @@ function checkCode() {
                 const symbolImg = document.createElement("img");
                 symbolImg.src = `symbols/${dayData[nextDay].symbol}`;
                 symbolImg.alt = `Symbool dag ${nextDay}`;
-                symbolImg.className = "symbol-img new-symbol"; // Animatie-class
+                symbolImg.className = "new-symbol";
                 nextDayElement.querySelector(".day-symbol").appendChild(symbolImg);
 
-                // Verwijder de animatie-class na afspelen
+                // Verwijder animatie-class na afspelen
                 setTimeout(() => {
                     symbolImg.classList.remove("new-symbol");
                 }, 500);
@@ -130,5 +129,6 @@ function checkCode() {
         resultDiv.className = "error";
     }
 }
+
 // Kalender genereren bij laden
 document.addEventListener('DOMContentLoaded', generateCalendar);
