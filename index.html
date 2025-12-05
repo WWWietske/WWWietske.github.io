@@ -1,24 +1,34 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventkalender Escape Puzzels</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>WATJJUS advent</title>
+    <style>
+        /* Hier komt de CSS (zie volgende stap) */
+    </style>
 </head>
 <body>
     <h1>WATJJUS ADVENT</h1>
     <p>Klik op een dag, vul de code in en ontvang het symbool voor het volgende vakje om te openen!</p>
-    <div class="calendar" id="calendar"></div>
-    <div id="codeInputSection">
-        <h2>Code voor <span id="selectedDay">dag 1</span></h2>
-        <input type="text" id="codeInput" placeholder="Voer de code in" autocomplete="off">
+
+    <!-- Kalender container -->
+    <div id="calendar" class="calendar"></div>
+
+    <!-- Code invoer sectie (initieel verborgen) -->
+    <div id="codeInputSection" style="display: none;">
+        <h2 id="selectedDay"></h2>
+        <input type="text" id="codeInput" placeholder="Voer de code in...">
         <div class="buttons">
             <button onclick="checkCode()">Controleer</button>
             <button onclick="backToCalendar()">Terug</button>
         </div>
         <div id="result"></div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Hier komt de JavaScript (zie volgende stappen)
+    </script>
 </body>
 </html>
