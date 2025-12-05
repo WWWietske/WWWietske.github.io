@@ -21,7 +21,12 @@ const dayData = {
 };
 
 // Huidige datum bepalen
-const today = new Date();
+// const today = new Date();
+// const currentDay = today.getDate();
+// const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
+
+// Tijdelijk overschrijven van de huidige datum voor testdoeleinden
+const today = new Date(2025, 11, 12); // December is maand 11 (0-11), 12 is de dag
 const currentDay = today.getDate();
 const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
 
