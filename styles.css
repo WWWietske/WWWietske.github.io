@@ -46,6 +46,7 @@ p {
 
 /* Dag vakjes - basisstijl */
 /* Dag vakjes - AANGEPAST voor zichtbare achtergrondsymbolen */
+/* Dag vakjes - AANGEPAST voor VOORAF zichtbare symbolen */
 .day {
     background: #fff;
     border: 1px solid #ddd;
@@ -60,17 +61,27 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     font-weight: bold;
     position: relative;
-    color: #333; /* Tekstkleur voor niet-voltooide dagen */
-}
-
-/* Voltooide dagen - MET SYMBOOL ALS ACHTERGROND */
-.day.completed {
-    background-color: rgba(46, 125, 50, 0.2); /* Lichtgroene achtergrond */
-    background-image: var(--day-symbol-url);
+    color: #333;
+    /* Voeg toe voor VOORAF zichtbare symbolen: */
     background-size: 60% 60%;
     background-repeat: no-repeat;
     background-position: center 30%;
-    color: white; /* Witte tekst voor contrast */
+}
+
+/* VOORAF zichtbare symbolen (lichtgrijs) */
+.day:not(.completed) {
+    background-image: var(--day-symbol-url);
+    opacity: 0.7; /* Licht transparant */
+    filter: grayscale(70%); /* Grijstint voor niet-voltooide dagen */
+}
+
+/* Voltooide dagen - MET KLEURRIJK SYMBOOL */
+.day.completed {
+    background-color: rgba(46, 125, 50, 0.2);
+    background-image: var(--day-symbol-url);
+    opacity: 1;
+    filter: none; /* Geen grijstint */
+    color: white;
     border-color: var(--kerst-groen);
 }
 
@@ -78,6 +89,8 @@ p {
 .day.current {
     background-color: var(--kerst-groen-extra-licht);
     border: 2px solid var(--kerst-groen-middel);
+    opacity: 1;
+    filter: none;
 }
 
 /* Toekomstige dagen (lichtrood, niet klikbaar) */
@@ -86,20 +99,16 @@ p {
     color: #555;
     cursor: not-allowed;
     border-color: var(--kerst-rood-middel);
-}
-
-/* Verleden dagen (lichtgroen) */
-.day.past {
-    background-color: var(--kerst-groen-licht);
-    color: white;
-    border-color: var(--kerst-groen-extra-licht);
+    background-image: var(--day-symbol-url);
+    opacity: 0.5;
+    filter: grayscale(90%);
 }
 
 /* Tekst altijd leesbaar houden */
 .day-number, .day-status {
     position: relative;
     z-index: 1;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Schaduw voor beter contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Zorgt dat de achtergrond goed zichtbaar is */
