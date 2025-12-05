@@ -46,7 +46,7 @@ p {
 
 /* Basisstijl voor dagvakjes */
 .day {
-    background: #fff;
+    background: #003e1f;
     border: 1px solid #ddd;
     border-radius: 8px;
     min-height: 100px;
