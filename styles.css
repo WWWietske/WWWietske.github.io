@@ -80,12 +80,13 @@ p {
 
 /* Toekomstige dagen */
 .day.future {
-    background-color: var(--kerst-rood-licht);
+    background-color: var(--kerst-rood);
     cursor: not-allowed;
 }
 
 /* Dag nummer en status */
 .day-number {
+    color: white;
     font-size: 1.5em;
     font-weight: bold;
     position: relative;
@@ -94,6 +95,7 @@ p {
 }
 
 .day-status {
+    color: white;
     font-size: 0.9em;
     margin-top: 5px;
     position: relative;
