@@ -229,7 +229,8 @@ button:last-of-type:hover {
         grid-template-columns: repeat(3, 1fr);
     }
     .day {
-        min-height: 80px;
+        height: 80px;
+        width: 80px;
     }
     .day-number {
         font-size: 1.2em;
