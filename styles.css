@@ -45,7 +45,7 @@ p {
 }
 
 /* Dag vakjes - basisstijl */
-/* Dag vakjes - AANGEPAST voor achtergrondsymbolen */
+/* Dag vakjes - AANGEPAST voor zichtbare achtergrondsymbolen */
 .day {
     background: #fff;
     border: 1px solid #ddd;
@@ -60,43 +60,67 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     font-weight: bold;
     position: relative;
-    overflow: hidden;
-    background-size: 60% 60%; /* Grootte symbool */
-    background-repeat: no-repeat;
-    background-position: center 20%; /* Positie bovenin */
+    color: #333; /* Tekstkleur voor niet-voltooide dagen */
 }
 
-/* Achtergrond symbolen duidelijker maken */
+/* Voltooide dagen - MET SYMBOOL ALS ACHTERGROND */
 .day.completed {
-    background-color: rgba(46, 125, 50, 0.85); /* Semi-transparant groen */
-    background-blend-mode: overlay; /* Zorgt dat het symbool goed zichtbaar blijft */
+    background-color: rgba(46, 125, 50, 0.2); /* Lichtgroene achtergrond */
+    background-image: var(--day-symbol-url);
+    background-size: 60% 60%;
+    background-repeat: no-repeat;
+    background-position: center 30%;
+    color: white; /* Witte tekst voor contrast */
+    border-color: var(--kerst-groen);
+}
+
+/* Huidige dag (extra nadruk) */
+.day.current {
+    background-color: var(--kerst-groen-extra-licht);
+    border: 2px solid var(--kerst-groen-middel);
+}
+
+/* Toekomstige dagen (lichtrood, niet klikbaar) */
+.day.future {
+    background-color: var(--kerst-rood-licht);
+    color: #555;
+    cursor: not-allowed;
+    border-color: var(--kerst-rood-middel);
+}
+
+/* Verleden dagen (lichtgroen) */
+.day.past {
+    background-color: var(--kerst-groen-licht);
+    color: white;
+    border-color: var(--kerst-groen-extra-licht);
+}
+
+/* Tekst altijd leesbaar houden */
+.day-number, .day-status {
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Schaduw voor beter contrast */
+}
+
+/* Zorgt dat de achtergrond goed zichtbaar is */
+.day.completed {
+    background-blend-mode: multiply; /* Zorgt voor betere kleurweergave */
+}
+
+/* Hover effect voor betere interactie */
+.day:hover:not(.future) {
+    transform: scale(1.03);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9) !important; /* Lichte achtergrond bij hover */
 }
 
 /* Speciale stijl voor dag 24 */
 .day.completed[data-day="24"] {
-    background-color: rgba(211, 47, 47, 0.85); /* Rood voor kerst */
+    background-color: rgba(211, 47, 47, 0.2);
+    background-blend-mode: multiply;
 }
 
-/* Hover effect voor betere zichtbaarheid */
-.day:hover:not(.future) {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-}
 
-/* Dag nummer en status */
-.day-number {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    position: relative;
-    z-index: 1; /* Zorgt dat tekst boven achtergrond blijft */
-}
-
-.day-status {
-    font-size: 0.9em;
-    margin-top: 5px;
-    position: relative;
-    z-index: 1;
-}
 
 /* Stijl voor de symbolen in het antwoordveld */
 #result img.symbol-img {
