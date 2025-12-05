@@ -197,7 +197,6 @@ function checkCode() {
     const resultDiv = document.getElementById("result");
 
     if (dayData[day] && input === dayData[day].code) {
-        // Toon het antwoord + het nextSymbol (symbool van de volgende dag)
         const nextDay = day + 1;
         const hasNextDay = nextDay <= 24;
 
@@ -221,24 +220,13 @@ function checkCode() {
         resultDiv.innerHTML = resultHTML;
         resultDiv.className = "success";
 
-        // Markeer dag als voltooid
+        // Markeer dag als voltooid en update achtergrond
         localStorage.setItem(`day${day}Completed`, "true");
-
-        // Update de achtergrond van de huidige dag
         const currentDayElement = document.querySelector(`.day[data-day="${day}"]`);
         if (currentDayElement) {
             currentDayElement.classList.add("completed");
             currentDayElement.querySelector(".day-status").textContent = "✓";
             currentDayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
-        }
-
-        // Toon het symbool van de VOLGENDE dag in de kalender
-        if (hasNextDay) {
-            const nextDayElement = document.querySelector(`.day[data-day="${nextDay}"]`);
-            if (nextDayElement) {
-                // Voeg een tijdelijk symbool toe als preview (optioneel)
-                // Dit is niet nodig als je alleen de achtergrond wilt updaten bij voltooiing
-            }
         }
 
         // Vernieuw de kalender
