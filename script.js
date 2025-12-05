@@ -40,10 +40,18 @@ function generateCalendar() {
             <div class="day-status"></div>
         `;
 
-        // Logica voor verleden/heden/toekomst
+        // Dag 7 is altijd zichtbaar
         if (day === 7) {
             dayElement.classList.add("current");
-        } else if (currentMonth === 12) {
+            dayElement.style.backgroundImage = `url('symbols/${dayData[day].symbol}')`;
+        }
+        // Andere dagen: alleen zichtbaar als vorige dag voltooid is
+        else if (localStorage.getItem(`day${day-1}Completed`)) {
+            dayElement.style.backgroundImage = `url('symbols/${dayData[day].symbol}')`;
+        }
+
+        // Status bepalen (verleden/heden/toekomst)
+        if (currentMonth === 12) {
             if (day < currentDay) dayElement.classList.add("past");
             else if (day === currentDay) dayElement.classList.add("current");
             else dayElement.classList.add("future");
@@ -51,10 +59,7 @@ function generateCalendar() {
             dayElement.classList.add("future");
         }
 
-        // ALLE DAGEN krijgen hun symbool als achtergrond
-        dayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
-
-        // Als de dag voltooid is: markeer als completed
+        // Als voltooid: markeer als completed
         if (localStorage.getItem(`day${day}Completed`)) {
             dayElement.classList.add("completed");
             dayElement.querySelector(".day-status").textContent = "✓";
@@ -62,10 +67,54 @@ function generateCalendar() {
 
         // Klikhandler
         if (day === 7 || (currentMonth === 12 && day <= currentDay) || currentMonth !== 12) {
-            dayElement.onclick = () => selectDay(day);
+            // Dag is alleen klikbaar als vorige dag voltooid is (behalve dag 7)
+            if (day === 7 || localStorage.getItem(`day${day-1}Completed`)) {
+                dayElement.onclick = () => selectDay(day);
+            }
         }
 
         calendar.appendChild(dayElement);
+    }
+}
+
+function checkCode() {
+    const input = document.getElementById("codeInput").value.trim().toUpperCase();
+    const day = parseInt(document.getElementById("codeInput").dataset.day);
+    const resultDiv = document.getElementById("result");
+
+    if (dayData[day] && input === dayData[day].code) {
+        // Toon antwoord + symbool van volgende dag
+        const nextDay = day + 1;
+        const hasNextDay = nextDay <= 24;
+
+        let resultHTML = `${dayData[day].answer}`;
+
+        if (hasNextDay) {
+            resultHTML += `
+                <br><br>
+                <strong>Hint voor morgen:</strong>
+                <div style="text-align: center; margin: 10px 0;">
+                    <img src="symbols/${dayData[nextDay].symbol}" class="symbol-img">
+                </div>
+                ${dayData[day].hint}
+            `;
+        }
+
+        if (day === 24) {
+            resultHTML += `<br><br><strong>🎉 Gefeliciteerd! 🎄</strong>`;
+        }
+
+        resultDiv.innerHTML = resultHTML;
+        resultDiv.className = "success";
+
+        // Markeer dag als voltooid
+        localStorage.setItem(`day${day}Completed`, "true");
+
+        // Update kalender
+        generateCalendar();
+    } else {
+        resultDiv.textContent = "❌ Onjuiste code!";
+        resultDiv.className = "error";
     }
 }
 
@@ -91,24 +140,25 @@ function checkCode() {
     const resultDiv = document.getElementById("result");
 
     if (dayData[day] && input === dayData[day].code) {
+        // Toon antwoord + symbool van volgende dag
         const nextDay = day + 1;
         const hasNextDay = nextDay <= 24;
 
         let resultHTML = `${dayData[day].answer}`;
 
-        if (hasNextDay && dayData[day].nextSymbol) {
+        if (hasNextDay) {
             resultHTML += `
                 <br><br>
-                <strong>Hint voor morgen (dag ${nextDay}):</strong>
+                <strong>Hint voor morgen:</strong>
                 <div style="text-align: center; margin: 10px 0;">
-                    <img src="symbols/${dayData[day].nextSymbol}" alt="symbool dag ${nextDay}" class="symbol-img">
+                    <img src="symbols/${dayData[nextDay].symbol}" class="symbol-img">
                 </div>
                 ${dayData[day].hint}
             `;
         }
 
         if (day === 24) {
-            resultHTML += `<br><br><strong>🎉 Gefeliciteerd! Je hebt alle dagen voltooid! 🎄🎁</strong>`;
+            resultHTML += `<br><br><strong>🎉 Gefeliciteerd! 🎄</strong>`;
         }
 
         resultDiv.innerHTML = resultHTML;
@@ -117,10 +167,10 @@ function checkCode() {
         // Markeer dag als voltooid
         localStorage.setItem(`day${day}Completed`, "true");
 
-        // Update de kalender
+        // Update kalender
         generateCalendar();
     } else {
-        resultDiv.textContent = "❌ Onjuiste code. Probeer opnieuw!";
+        resultDiv.textContent = "❌ Onjuiste code!";
         resultDiv.className = "error";
     }
 }
