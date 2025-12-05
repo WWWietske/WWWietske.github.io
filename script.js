@@ -1,131 +1,23 @@
-// Object met codes en bijbehorende hints per dag (7 t/m 24 december)
+// Object met codes en symbolen
 const dayData = {
-    7:   {
-        code: "SNEEUW",
-        symbol: "sok.png",          // Symbool van dag 7 (voor kalender)
-        nextSymbol: "thee.png",     // Symbool van dag 8 (voor antwoord)
-        answer: "De sleutel ligt onder de kerstboom.",
-        hint: "Zoek iets warms om te drinken..."
-    },
-    8:   {
-        code: "KAARS",
-        symbol: "thee.png",         // Symbool van dag 8
-        nextSymbol: "kerstbal.png", // Symbool van dag 9
-        answer: "Zoek bij de theepot in de keuken.",
-        hint: "Kijk in de kerstboom..."
-    },
-    9:   {
-        code: "STER",
-        symbol: "kerstbal.png",     // Symbool van dag 9
-        nextSymbol: "zuurstok.png", // Symbool van dag 10
-        answer: "De kerstbal hangt aan de linkerkant van de boom.",
-        hint: "Zoek iets zoets..."
-    },
-    10:  {
-        code: "BEL",
-        symbol: "zuurstok.png",     // Symbool van dag 10
-        nextSymbol: "takblaadje.png", // Symbool van dag 11
-        answer: "De zuurstok ligt in de snoepkom.",
-        hint: "Kijk naar een plant..."
-    },
-    11:  {
-        code: "KRANS",
-        symbol: "takblaadje.png",   // Symbool van dag 11
-        nextSymbol: "huis.png",     // Symbool van dag 12
-        answer: "Het blaadje ligt bij de kerstkrans aan de deur.",
-        hint: "Zoek een mini-huisje..."
-    },
-    12:  {
-        code: "PAKJE",
-        symbol: "huis.png",         // Symbool van dag 12
-        nextSymbol: "truistrik.png", // Symbool van dag 13
-        answer: "Het kersthuisje staat op de schouw.",
-        hint: "Kijk onder de kersttrui..."
-    },
-    13:  {
-        code: "ELF",
-        symbol: "truistrik.png",    // Symbool van dag 13
-        nextSymbol: "truiboom.png", // Symbool van dag 14
-        answer: "De strik zit aan de kersttrui in de kast.",
-        hint: "Zoek een kerstboom van papier..."
-    },
-    14:  {
-        code: "LIED",
-        symbol: "truiboom.png",     // Symbool van dag 14
-        nextSymbol: "ijsbeer.png",  // Symbool van dag 15
-        answer: "De papieren kerstboom hangt aan de koelkast.",
-        hint: "Zoek een dier dat van kou houdt..."
-    },
-    15:  {
-        code: "KOOKIE",
-        symbol: "ijsbeer.png",      // Symbool van dag 15
-        nextSymbol: "pinguin.png",  // Symbool van dag 16
-        answer: "De ijsbeer staat op de boekenplank.",
-        hint: "Zoek een zwart-wit dier..."
-    },
-    16:  {
-        code: "LINT",
-        symbol: "pinguin.png",      // Symbool van dag 16
-        nextSymbol: "sneeuwpop.png", // Symbool van dag 17
-        answer: "De pinguïn staat naast de tv.",
-        hint: "Bouw iets met sneeuw..."
-    },
-    17:  {
-        code: "KALF",
-        symbol: "sneeuwpop.png",    // Symbool van dag 17
-        nextSymbol: "vosje.png",     // Symbool van dag 18
-        answer: "De sneeuwpop staat in de tuin (of op een foto).",
-        hint: "Zoek een sluwe vos..."
-    },
-    18:  {
-        code: "WENS",
-        symbol: "vosje.png",         // Symbool van dag 18
-        nextSymbol: "koekemannetje.png", // Symbool van dag 19
-        answer: "Het vosje zit verstopt in de kerststal.",
-        hint: "Zoek iets lekkers om op te eten..."
-    },
-    19:  {
-        code: "IJS",
-        symbol: "koekemannetje.png", // Symbool van dag 19
-        nextSymbol: "boompjes.png",   // Symbool van dag 20
-        answer: "Het koekemannetje hangt aan het raam.",
-        hint: "Kijk naar kleine boompjes..."
-    },
-    20:  {
-        code: "KLOK",
-        symbol: "boompjes.png",      // Symbool van dag 20
-        nextSymbol: "takjebessen.png", // Symbool van dag 21
-        answer: "De mini-boompjes staan op de vensterbank.",
-        hint: "Zoek rode bessen..."
-    },
-    21:  {
-        code: "HERT",
-        symbol: "takjebessen.png",   // Symbool van dag 21
-        nextSymbol: "wanten.png",    // Symbool van dag 22
-        answer: "De tak met bessen ligt op tafel.",
-        hint: "Houd je handen warm..."
-    },
-    22:  {
-        code: "KAART",
-        symbol: "wanten.png",       // Symbool van dag 22
-        nextSymbol: "muts.png",      // Symbool van dag 23
-        answer: "De wanten hangen bij de deur.",
-        hint: "Zet iets op je hoofd..."
-    },
-    23:  {
-        code: "VUUR",
-        symbol: "muts.png",          // Symbool van dag 23
-        nextSymbol: "cadeau.png",    // Symbool van dag 24
-        answer: "De muts ligt op de bank.",
-        hint: "Morgen is het kerst!"
-    },
-    24:  {
-        code: "KADO",
-        symbol: "cadeau.png",        // Symbool van dag 24
-        nextSymbol: "",              // Geen volgende dag
-        answer: "Gefeliciteerd! Het laatste cadeau ligt onder de tafel. Proost! 🎄🎁",
-        hint: ""                      // Geen hint voor dag 25
-    }
+    7:   { code: "SNEEUW",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "De sleutel ligt onder de kerstboom.",                     hint: "Zoek iets warms om te drinken..." },
+    8:   { code: "KAARS",    symbol: "thee.png",         nextSymbol: "kerstbal.png", answer: "Zoek bij de theepot in de keuken.",                      hint: "Kijk in de kerstboom..." },
+    9:   { code: "STER",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De kerstbal hangt aan de linkerkant van de boom.",        hint: "Zoek iets zoets..." },
+    10:  { code: "BEL",      symbol: "zuurstok.png",     nextSymbol: "takblaadje.png", answer: "De zuurstok ligt in de snoepkom.",                       hint: "Kijk naar een plant..." },
+    11:  { code: "KRANS",    symbol: "takblaadje.png",   nextSymbol: "huis.png",      answer: "Het blaadje ligt bij de kerstkrans aan de deur.",         hint: "Zoek een mini-huisje..." },
+    12:  { code: "PAKJE",    symbol: "huis.png",         nextSymbol: "truistrik.png", answer: "Het kersthuisje staat op de schouw.",                    hint: "Kijk onder de kersttrui..." },
+    13:  { code: "ELF",      symbol: "truistrik.png",    nextSymbol: "truiboom.png", answer: "De strik zit aan de kersttrui in de kast.",              hint: "Zoek een kerstboom van papier..." },
+    14:  { code: "LIED",     symbol: "truiboom.png",     nextSymbol: "ijsbeer.png",  answer: "De papieren kerstboom hangt aan de koelkast.",           hint: "Zoek een dier dat van kou houdt..." },
+    15:  { code: "KOOKIE",   symbol: "ijsbeer.png",      nextSymbol: "pinguin.png",  answer: "De ijsbeer staat op de boekenplank.",                    hint: "Zoek een zwart-wit dier..." },
+    16:  { code: "LINT",     symbol: "pinguin.png",      nextSymbol: "sneeuwpop.png", answer: "De pinguïn staat naast de tv.",                         hint: "Bouw iets met sneeuw..." },
+    17:  { code: "KALF",     symbol: "sneeuwpop.png",    nextSymbol: "vosje.png",    answer: "De sneeuwpop staat in de tuin (of op een foto).",        hint: "Zoek een sluwe vos..." },
+    18:  { code: "WENS",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Het vosje zit verstopt in de kerststal.",               hint: "Zoek iets lekkers om op te eten..." },
+    19:  { code: "IJS",      symbol: "koekemannetje.png", nextSymbol: "boompjes.png", answer: "Het koekemannetje hangt aan het raam.",                hint: "Kijk naar kleine boompjes..." },
+    20:  { code: "KLOK",     symbol: "boompjes.png",      nextSymbol: "takjebessen.png", answer: "De mini-boompjes staan op de vensterbank.",            hint: "Zoek rode bessen..." },
+    21:  { code: "HERT",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "De tak met bessen ligt op tafel.",                     hint: "Houd je handen warm..." },
+    22:  { code: "KAART",    symbol: "wanten.png",       nextSymbol: "muts.png",     answer: "De wanten hangen bij de deur.",                         hint: "Zet iets op je hoofd..." },
+    23:  { code: "VUUR",     symbol: "muts.png",          nextSymbol: "cadeau.png",  answer: "De muts ligt op de bank.",                              hint: "Morgen is het kerst!" },
+    24:  { code: "KADO",     symbol: "cadeau.png",       nextSymbol: "",           answer: "Gefeliciteerd! Het laatste cadeau ligt onder de tafel. Proost! 🎄🎁", hint: "" }
 };
 
 // Huidige datum bepalen
@@ -159,11 +51,13 @@ function generateCalendar() {
             dayElement.classList.add("future");
         }
 
-        // Als de dag voltooid is: gebruik symbool als achtergrond
+        // ALLE DAGEN krijgen hun symbool als achtergrond
+        dayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
+
+        // Als de dag voltooid is: markeer als completed
         if (localStorage.getItem(`day${day}Completed`)) {
             dayElement.classList.add("completed");
             dayElement.querySelector(".day-status").textContent = "✓";
-            dayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
         }
 
         // Klikhandler
@@ -177,7 +71,7 @@ function generateCalendar() {
 
 // Dag selecteren
 function selectDay(day) {
-    document.getElementById("selectedDay").textContent = `dag ${day} december`;
+    document.getElementById("selectedDay").textContent = `Dag ${day} december`;
     document.getElementById("codeInputSection").style.display = "block";
     document.getElementById("codeInput").dataset.day = day;
     document.getElementById("codeInput").value = "";
@@ -220,15 +114,10 @@ function checkCode() {
         resultDiv.innerHTML = resultHTML;
         resultDiv.className = "success";
 
-        // Markeer dag als voltooid (geen achtergrondupdate nodig, want die is al gezet)
-        localStorage.setItem(`day${day}Completed`, "true`);
-        const currentDayElement = document.querySelector(`.day[data-day="${day}"]`);
-        if (currentDayElement) {
-            currentDayElement.classList.add("completed");
-            currentDayElement.querySelector(".day-status").textContent = "✓";
-        }
+        // Markeer dag als voltooid
+        localStorage.setItem(`day${day}Completed`, "true");
 
-        // Vernieuw de kalender
+        // Update de kalender
         generateCalendar();
     } else {
         resultDiv.textContent = "❌ Onjuiste code. Probeer opnieuw!";
