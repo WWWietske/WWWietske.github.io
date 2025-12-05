@@ -220,13 +220,12 @@ function checkCode() {
         resultDiv.innerHTML = resultHTML;
         resultDiv.className = "success";
 
-        // Markeer dag als voltooid en update achtergrond
-        localStorage.setItem(`day${day}Completed`, "true");
+        // Markeer dag als voltooid (geen achtergrondupdate nodig, want die is al gezet)
+        localStorage.setItem(`day${day}Completed`, "true`);
         const currentDayElement = document.querySelector(`.day[data-day="${day}"]`);
         if (currentDayElement) {
             currentDayElement.classList.add("completed");
             currentDayElement.querySelector(".day-status").textContent = "✓";
-            currentDayElement.style.setProperty('--day-symbol-url', `url('symbols/${dayData[day].symbol}')`);
         }
 
         // Vernieuw de kalender
