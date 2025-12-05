@@ -50,8 +50,8 @@ p {
     background-size: 100% 100%; /* Vult de volledige achtergrond */
     background-position: center;
     min-height: 0; /* Verwijder vaste hoogte */
-    height: 100px; /* Vaste hoogte en breedte */
-    width: 100px; /* Vaste breedte */
+    height: 200px; /* Vaste hoogte en breedte */
+    width: 200px; /* Vaste breedte */
     background: var(--kerst-groen);
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -59,7 +59,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: center;
     cursor: pointer;
     background-size: cover;
     background-repeat: no-repeat;
@@ -80,6 +80,7 @@ p {
 /* Huidige dag */
 .day.current {
     border: 2px solid var(--kerst-groen-middel);
+    cursor: pointer;
 }
 
 /* Toekomstige dagen */
