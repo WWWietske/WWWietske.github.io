@@ -46,19 +46,12 @@ p {
 
 /* Basisstijl voor dagvakjes */
 .day {
-    background: #003e1f;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    background-size: cover;
-    background-repeat: no-repeat;
+    aspect-ratio: 1; /* Zorgt voor vierkante vakjes */
+    background-size: 100% 100%; /* Vult de volledige achtergrond */
     background-position: center;
+    min-height: 0; /* Verwijder vaste hoogte */
+    height: 100px; /* Vaste hoogte en breedte */
+    width: 100px; /* Vaste breedte */
 }
 
 /* Dag 7 is altijd zichtbaar */
