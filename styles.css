@@ -52,6 +52,17 @@ p {
     min-height: 0; /* Verwijder vaste hoogte */
     height: 100px; /* Vaste hoogte en breedte */
     width: 100px; /* Vaste breedte */
+    background: var(--kerst-groen);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* Dag 7 is altijd zichtbaar */
