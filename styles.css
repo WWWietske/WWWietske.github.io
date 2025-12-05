@@ -44,71 +44,44 @@ p {
     max-width: 800px;
 }
 
-/* Dag vakjes - AANGEPAST voor achtergrondsymbolen */
+/* Basisstijl voor dagvakjes */
 .day {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    cursor: pointer;
     min-height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    font-weight: bold;
     position: relative;
-    color: #333;
-    background-size: 60% 60%;
+    cursor: pointer;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center 30%;
+    background-position: center;
 }
 
-/* VOORAF zichtbare symbolen (lichtgrijs) */
-.day:not(.completed) {
-    background-image: var(--day-symbol-url);
-    opacity: 0.7;
-    filter: grayscale(70%);
+/* Dag 7 is altijd zichtbaar */
+.day[data-day="7"] {
+    background-image: url('symbols/sok.png');
 }
 
-/* Voltooide dagen - MET KLEURRIJK SYMBOOL */
+/* Voltooide dagen tonen hun symbool */
 .day.completed {
     background-color: rgba(46, 125, 50, 0.2);
-    background-image: var(--day-symbol-url);
-    opacity: 1;
-    filter: none;
     color: white;
     border-color: var(--kerst-groen);
 }
 
-/* Huidige dag (extra nadruk) */
+/* Huidige dag */
 .day.current {
-    background-color: var(--kerst-groen-extra-licht);
     border: 2px solid var(--kerst-groen-middel);
-    opacity: 1;
-    filter: none;
 }
 
-/* Verleden dagen (lichtgroen) */
-.day.past {
-    background-color: var(--kerst-groen-licht);
-    color: white;
-    border-color: var(--kerst-groen-extra-licht);
-    background-image: var(--day-symbol-url);
-    opacity: 1;
-    filter: none;
-}
-
-/* Toekomstige dagen (lichtrood, niet klikbaar) */
+/* Toekomstige dagen */
 .day.future {
     background-color: var(--kerst-rood-licht);
-    color: #555;
     cursor: not-allowed;
-    border-color: var(--kerst-rood-middel);
-    background-image: var(--day-symbol-url);
-    opacity: 0.5;
-    filter: grayscale(90%);
 }
 
 /* Dag nummer en status */
