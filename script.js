@@ -40,10 +40,10 @@ function generateCalendar() {
             <div class="day-status"></div>
         `;
 
-        // Dag 7 is altijd zichtbaar
+        // Dag 7 toont altijd het symbool als achtergrond
         if (day === 7) {
-            dayElement.classList.add("current");
             dayElement.style.backgroundImage = `url('symbols/${dayData[day].symbol}')`;
+            dayElement.classList.add("current");
         }
         // Andere dagen: alleen zichtbaar als vorige dag voltooid is
         else if (localStorage.getItem(`day${day-1}Completed`)) {
@@ -83,7 +83,6 @@ function checkCode() {
     const resultDiv = document.getElementById("result");
 
     if (dayData[day] && input === dayData[day].code) {
-        // Toon antwoord + symbool van volgende dag
         const nextDay = day + 1;
         const hasNextDay = nextDay <= 24;
 
