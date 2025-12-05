@@ -1,12 +1,12 @@
 :root {
     /* Kerstkleurenpalet */
-    --kerst-groen: #003e1f;          /* Donkergroen */
-    --kerst-groen-middel: #2E7D32;    /* Middelgroen */
-    --kerst-groen-licht: #4CAF50;     /* Lichtgroen */
-    --kerst-groen-extra-licht: #81C784; /* Extra lichtgroen */
-    --kerst-rood: #ba2d0b;            /* Donkerrood */
-    --kerst-rood-middel: #D32F2F;     /* Middelrood */
-    --kerst-rood-licht: #FFCDD2;      /* Lichtrood */
+    --kerst-groen: #003e1f;
+    --kerst-groen-middel: #2E7D32;
+    --kerst-groen-licht: #4CAF50;
+    --kerst-groen-extra-licht: #81C784;
+    --kerst-rood: #ba2d0b;
+    --kerst-rood-middel: #D32F2F;
+    --kerst-rood-licht: #FFCDD2;
     --success-color: var(--kerst-groen);
     --error-color: var(--kerst-rood);
 }
@@ -35,18 +35,16 @@ p {
     color: #555;
 }
 
-/* Kalender grid */
+/* Kalender grid - AANGEPAST voor 4 kolommen */
 .calendar {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin: 20px auto;
     max-width: 800px;
 }
 
-/* Dag vakjes - basisstijl */
-/* Dag vakjes - AANGEPAST voor zichtbare achtergrondsymbolen */
-/* Dag vakjes - AANGEPAST voor VOORAF zichtbare symbolen */
+/* Dag vakjes - AANGEPAST voor achtergrondsymbolen */
 .day {
     background: #fff;
     border: 1px solid #ddd;
@@ -58,11 +56,10 @@ p {
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     font-weight: bold;
     position: relative;
     color: #333;
-    /* Voeg toe voor VOORAF zichtbare symbolen: */
     background-size: 60% 60%;
     background-repeat: no-repeat;
     background-position: center 30%;
@@ -71,8 +68,8 @@ p {
 /* VOORAF zichtbare symbolen (lichtgrijs) */
 .day:not(.completed) {
     background-image: var(--day-symbol-url);
-    opacity: 0.7; /* Licht transparant */
-    filter: grayscale(70%); /* Grijstint voor niet-voltooide dagen */
+    opacity: 0.7;
+    filter: grayscale(70%);
 }
 
 /* Voltooide dagen - MET KLEURRIJK SYMBOOL */
@@ -80,7 +77,7 @@ p {
     background-color: rgba(46, 125, 50, 0.2);
     background-image: var(--day-symbol-url);
     opacity: 1;
-    filter: none; /* Geen grijstint */
+    filter: none;
     color: white;
     border-color: var(--kerst-groen);
 }
@@ -89,6 +86,16 @@ p {
 .day.current {
     background-color: var(--kerst-groen-extra-licht);
     border: 2px solid var(--kerst-groen-middel);
+    opacity: 1;
+    filter: none;
+}
+
+/* Verleden dagen (lichtgroen) */
+.day.past {
+    background-color: var(--kerst-groen-licht);
+    color: white;
+    border-color: var(--kerst-groen-extra-licht);
+    background-image: var(--day-symbol-url);
     opacity: 1;
     filter: none;
 }
@@ -104,53 +111,20 @@ p {
     filter: grayscale(90%);
 }
 
-/* Tekst altijd leesbaar houden */
-.day-number, .day-status {
+/* Dag nummer en status */
+.day-number {
+    font-size: 1.5em;
+    font-weight: bold;
     position: relative;
     z-index: 1;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Zorgt dat de achtergrond goed zichtbaar is */
-.day.completed {
-    background-blend-mode: multiply; /* Zorgt voor betere kleurweergave */
-}
-
-/* Hover effect voor betere interactie */
-.day:hover:not(.future) {
-    transform: scale(1.03);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.9) !important; /* Lichte achtergrond bij hover */
-}
-
-/* Speciale stijl voor dag 24 */
-.day.completed[data-day="24"] {
-    background-color: rgba(211, 47, 47, 0.2);
-    background-blend-mode: multiply;
-}
-
-
-
-/* Stijl voor de symbolen in het antwoordveld */
-#result img.symbol-img {
-    display: block;
-    width: 40px;
-    height: 40px;
-    margin: 10px auto;
-    object-fit: contain;
-    border: 2px solid var(--kerst-groen-middel);
-    border-radius: 50%;
-    padding: 5px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Toekomstige dagen (lichtrood) */
-.day.future {
-    background-color: var(--kerst-rood);
-    color: var(--kerst-rood);
-    cursor: not-allowed;
-    border-color: var(--kerst-rood-middel);
+.day-status {
+    font-size: 0.9em;
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
 }
 
 /* Input sectie */
@@ -160,7 +134,6 @@ p {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    display: none;
     max-width: 600px;
 }
 
@@ -219,8 +192,8 @@ button:last-of-type:hover {
 /* Resultaat sectie */
 #result {
     font-weight: bold;
-    margin-top: 15px;
-    padding: 12px;
+    margin-top: 20px;
+    padding: 15px;
     border-radius: 4px;
     display: none;
 }
@@ -239,34 +212,12 @@ button:last-of-type:hover {
     border: 1px solid var(--kerst-rood-middel);
 }
 
-/* Dag-symbolen */
-.day {
-    min-height: 100px;
-    padding: 8px;
-}
-
-.day-symbol {
-    width: 24px;  /* Kleinere afmeting */
-    height: 24px;
-    margin: 3px auto; /* Minder margin */
-}
-
-.day-symbol img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Zorgt dat afbeeldingen niet vervormen */
-}
-
-.day.completed .day-symbol img {
-    opacity: 1;
-}
-
+/* Symbool in het antwoord (VIERKANT) */
 #result img.symbol-img {
     display: block;
     width: 40px;
     height: 40px;
-    margin: 10px 0;
-    margin-left: 20px; /* Inspringing */
+    margin: 10px auto;
     object-fit: contain;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -275,14 +226,28 @@ button:last-of-type:hover {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Animatie voor nieuwe symbolen (volgende dag) */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+/* Animatie voor voltooiing */
+@keyframes completeDay {
+    0% {
+        opacity: 0.7;
+        filter: grayscale(70%);
+        background-color: rgba(46, 125, 50, 0);
+    }
+    100% {
+        opacity: 1;
+        filter: none;
+        background-color: rgba(46, 125, 50, 0.2);
+    }
 }
 
-.new-symbol {
-    animation: fadeIn 0.5s ease forwards;
+.day.completed {
+    animation: completeDay 0.5s ease forwards;
+}
+
+/* Hover effect voor niet-voltooide dagen */
+.day:not(.completed):hover:not(.future) {
+    opacity: 0.9;
+    filter: grayscale(50%);
 }
 
 /* Responsive layout */
@@ -290,15 +255,10 @@ button:last-of-type:hover {
     .calendar {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-/* Subtiele animatie voor huidige dag */
-.day.current {
-    animation: subtlePulse 2s infinite;
-}
-
-@keyframes subtlePulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
+    .day {
+        min-height: 80px;
+    }
+    .day-number {
+        font-size: 1.2em;
+    }
 }
