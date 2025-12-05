@@ -49,6 +49,7 @@ function generateCalendar() {
         if (day === 7) {
             if (currentMonth === 12 && currentDay === 7) {
                 dayElement.classList.add("current");
+                dayElement.onclick = () => selectDay(day);
             }
             dayElement.style.backgroundImage = `url('symbols/${dayData[day].symbol}')`;
         }
