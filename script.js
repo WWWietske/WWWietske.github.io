@@ -1,34 +1,34 @@
 // Object met codes en symbolen
 const dayData = {
-    7:   { code: "SNEEUW",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "De sleutel ligt onder de kerstboom.",                     hint: "Zoek iets warms om te drinken..." },
-    8:   { code: "KAARS",    symbol: "thee.png",         nextSymbol: "kerstbal.png", answer: "Zoek bij de theepot in de keuken.",                      hint: "Kijk in de kerstboom..." },
-    9:   { code: "STER",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De kerstbal hangt aan de linkerkant van de boom.",        hint: "Zoek iets zoets..." },
-    10:  { code: "BEL",      symbol: "zuurstok.png",     nextSymbol: "takblaadje.png", answer: "De zuurstok ligt in de snoepkom.",                       hint: "Kijk naar een plant..." },
-    11:  { code: "KRANS",    symbol: "takblaadje.png",   nextSymbol: "huis.png",      answer: "Het blaadje ligt bij de kerstkrans aan de deur.",         hint: "Zoek een mini-huisje..." },
-    12:  { code: "PAKJE",    symbol: "huis.png",         nextSymbol: "truistrik.png", answer: "Het kersthuisje staat op de schouw.",                    hint: "Kijk onder de kersttrui..." },
-    13:  { code: "ELF",      symbol: "truistrik.png",    nextSymbol: "truiboom.png", answer: "De strik zit aan de kersttrui in de kast.",              hint: "Zoek een kerstboom van papier..." },
-    14:  { code: "LIED",     symbol: "truiboom.png",     nextSymbol: "ijsbeer.png",  answer: "De papieren kerstboom hangt aan de koelkast.",           hint: "Zoek een dier dat van kou houdt..." },
-    15:  { code: "KOOKIE",   symbol: "ijsbeer.png",      nextSymbol: "pinguin.png",  answer: "De ijsbeer staat op de boekenplank.",                    hint: "Zoek een zwart-wit dier..." },
-    16:  { code: "LINT",     symbol: "pinguin.png",      nextSymbol: "sneeuwpop.png", answer: "De pinguïn staat naast de tv.",                         hint: "Bouw iets met sneeuw..." },
-    17:  { code: "KALF",     symbol: "sneeuwpop.png",    nextSymbol: "vosje.png",    answer: "De sneeuwpop staat in de tuin (of op een foto).",        hint: "Zoek een sluwe vos..." },
-    18:  { code: "WENS",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Het vosje zit verstopt in de kerststal.",               hint: "Zoek iets lekkers om op te eten..." },
-    19:  { code: "IJS",      symbol: "koekemannetje.png", nextSymbol: "boompjes.png", answer: "Het koekemannetje hangt aan het raam.",                hint: "Kijk naar kleine boompjes..." },
-    20:  { code: "KLOK",     symbol: "boompjes.png",      nextSymbol: "takjebessen.png", answer: "De mini-boompjes staan op de vensterbank.",            hint: "Zoek rode bessen..." },
-    21:  { code: "HERT",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "De tak met bessen ligt op tafel.",                     hint: "Houd je handen warm..." },
-    22:  { code: "KAART",    symbol: "wanten.png",       nextSymbol: "muts.png",     answer: "De wanten hangen bij de deur.",                         hint: "Zet iets op je hoofd..." },
-    23:  { code: "VUUR",     symbol: "muts.png",          nextSymbol: "cadeau.png",  answer: "De muts ligt op de bank.",                              hint: "Morgen is het kerst!" },
-    24:  { code: "KADO",     symbol: "cadeau.png",       nextSymbol: "",           answer: "Gefeliciteerd! Het laatste cadeau ligt onder de tafel. Proost! 🎄🎁", hint: "" }
+    7:   { code: "313",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "De sleutel ligt onder de kerstboom.",                     hint: "Zoek iets warms om te drinken..." },
+    8:   { code: "432",    symbol: "thee.png",         nextSymbol: "kerstbal.png", answer: "Zoek bij de theepot in de keuken.",                      hint: "Kijk in de kerstboom..." },
+    9:   { code: "Londen",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De kerstbal hangt aan de linkerkant van de boom.",        hint: "Zoek iets zoets..." },
+    10:  { code: "21-19-36864",      symbol: "zuurstok.png",     nextSymbol: "takblaadje.png", answer: "De zuurstok ligt in de snoepkom.",                       hint: "Kijk naar een plant..." },
+    11:  { code: "10100111111000",    symbol: "takblaadje.png",   nextSymbol: "huis.png",      answer: "Het blaadje ligt bij de kerstkrans aan de deur.",         hint: "Zoek een mini-huisje..." },
+    12:  { code: "in een cocktail",    symbol: "huis.png",         nextSymbol: "truistrik.png", answer: "Het kersthuisje staat op de schouw.",                    hint: "Kijk onder de kersttrui..." },
+    13:  { code: "watjjus",      symbol: "truistrik.png",    nextSymbol: "truiboom.png", answer: "De strik zit aan de kersttrui in de kast.",              hint: "Zoek een kerstboom van papier..." },
+    14:  { code: "krans",     symbol: "truiboom.png",     nextSymbol: "ijsbeer.png",  answer: "De papieren kerstboom hangt aan de koelkast.",           hint: "Zoek een dier dat van kou houdt..." },
+    15:  { code: "vier eieren",   symbol: "ijsbeer.png",      nextSymbol: "pinguin.png",  answer: "De ijsbeer staat op de boekenplank.",                    hint: "Zoek een zwart-wit dier..." },
+    16:  { code: "2021",     symbol: "pinguin.png",      nextSymbol: "sneeuwpop.png", answer: "De pinguïn staat naast de tv.",                         hint: "Bouw iets met sneeuw..." },
+    17:  { code: "Helaas nog geen cadeau vandaag jullie doen goed je best iedere dag wat dichterbij ga zo door joe",     symbol: "sneeuwpop.png",    nextSymbol: "vosje.png",    answer: "De sneeuwpop staat in de tuin (of op een foto).",        hint: "Zoek een sluwe vos..." },
+    18:  { code: "christmas movie",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Het vosje zit verstopt in de kerststal.",               hint: "Zoek iets lekkers om op te eten..." },
+    19:  { code: "5",      symbol: "koekemannetje.png", nextSymbol: "boompjes.png", answer: "Het koekemannetje hangt aan het raam.",                hint: "Kijk naar kleine boompjes..." },
+    20:  { code: "4524",     symbol: "boompjes.png",      nextSymbol: "takjebessen.png", answer: "De mini-boompjes staan op de vensterbank.",            hint: "Zoek rode bessen..." },
+    21:  { code: "sneeuwpop",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "De tak met bessen ligt op tafel.",                     hint: "Houd je handen warm..." },
+    22:  { code: "The Twelve Days of Christmas",    symbol: "wanten.png",       nextSymbol: "muts.png",     answer: "De wanten hangen bij de deur.",                         hint: "Zet iets op je hoofd..." },
+    23:  { code: "Haha jullie zijn er nog steeds niet",     symbol: "muts.png",          nextSymbol: "cadeau.png",  answer: "De muts ligt op de bank.",                              hint: "Morgen is het kerst!" },
+    24:  { code: "Open de dubbele bodem",     symbol: "cadeau.png",       nextSymbol: "",           answer: "Gefeliciteerd! Het laatste cadeau ligt onder de tafel. Proost! 🎄🎁", hint: "" }
 };
 
 // Huidige datum bepalen
-const today = new Date();
-const currentDay = today.getDate();
-const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
-
-// Tijdelijk overschrijven van de huidige datum voor testdoeleinden
-// const today = new Date(2025, 11, 12); // December is maand 11 (0-11), 12 is de dag
+// const today = new Date();
 // const currentDay = today.getDate();
 // const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
+
+// Tijdelijk overschrijven van de huidige datum voor testdoeleinden
+const today = new Date(2025, 11, 12); // December is maand 11 (0-11), 12 is de dag
+const currentDay = today.getDate();
+const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
 
 // Kalender genereren
 function generateCalendar() {
