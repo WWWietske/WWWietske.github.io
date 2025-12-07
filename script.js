@@ -1,6 +1,6 @@
 // Object met codes en symbolen
 const dayData = {
-    7:   { code: "313",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "De sleutel ligt onder de kerstboom.",                     hint: "Zoek iets warms om te drinken..." },
+    7:   { code: "313",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "Raadsel elf wenst jullie succes!",                     hint: "Zoek iets warms om te drinken..." },
     8:   { code: "432",    symbol: "thee.png",         nextSymbol: "kerstbal.png", answer: "Zoek bij de theepot in de keuken.",                      hint: "Kijk in de kerstboom..." },
     9:   { code: "Londen",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De kerstbal hangt aan de linkerkant van de boom.",        hint: "Zoek iets zoets..." },
     10:  { code: "21-19-36864",      symbol: "zuurstok.png",     nextSymbol: "takblaadje.png", answer: "De zuurstok ligt in de snoepkom.",                       hint: "Kijk naar een plant..." },
@@ -21,14 +21,14 @@ const dayData = {
 };
 
 // Huidige datum bepalen
-// const today = new Date();
-// const currentDay = today.getDate();
-// const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
-
-// Tijdelijk overschrijven van de huidige datum voor testdoeleinden
-const today = new Date(2025, 11, 12); // December is maand 11 (0-11), 12 is de dag
+const today = new Date();
 const currentDay = today.getDate();
 const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
+
+// Tijdelijk overschrijven van de huidige datum voor testdoeleinden
+// const today = new Date(2025, 11, 12); // December is maand 11 (0-11), 12 is de dag
+// const currentDay = today.getDate();
+// const currentMonth = today.getMonth() + 1; // Januari = 1, December = 12
 
 // Kalender genereren
 function generateCalendar() {
