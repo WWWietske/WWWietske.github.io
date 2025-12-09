@@ -2,7 +2,7 @@
 const dayData = {
     7:   { code: "313",   symbol: "sok.png",          nextSymbol: "thee.png",     answer: "Raadsel elf wenst jullie succes! Onthoud de letter D.",                     hint: "Zoek iets warms om te drinken..." },
     8:   { code: "432",    symbol: "thee.png",         nextSymbol: "kerstbal.png", answer: "Dat was even puzzelen. Onthoud de letter D.",                      hint: "Kijk in de kerstboom..." },
-    9:   { code: "Londen",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De volgend WATJJUS trip staat op de planning, goed geraden! Onthoud de letter E.",        hint: "Zoek iets zoets..." },
+    9:   { code: "LONDEN",     symbol: "kerstbal.png",     nextSymbol: "zuurstok.png", answer: "De volgend WATJJUS trip staat op de planning, goed geraden! Onthoud de letter E.",        hint: "Zoek iets zoets..." },
     10:  { code: "21-19-36864",      symbol: "zuurstok.png",     nextSymbol: "takblaadje.png", answer: "Knap de logica doorgrond. Onthoud de letter O.",                       hint: "Kijk naar een plant..." },
     11:  { code: "10100111111000",    symbol: "takblaadje.png",   nextSymbol: "huis.png",      answer: "Pfoe, wat een lange code was dat. Onthoud de letter E.",         hint: "Zoek een mini-huisje..." },
     12:  { code: "in een cocktail",    symbol: "huis.png",         nextSymbol: "truistrik.png", answer: "Ik kan er ook wel eentje gebruiken. Onthoud de letter P.",                    hint: "Wat een mooie trui..." },
@@ -90,7 +90,7 @@ function checkCode() {
     const day = parseInt(document.getElementById("codeInput").dataset.day);
     const resultDiv = document.getElementById("result");
 
-    if (dayData[day] && input === dayData[day].code) {
+    if (dayData[day] && input === dayData[day].code.toUpperCase()) {
         const nextDay = day + 1;
         const hasNextDay = nextDay <= 24;
 
