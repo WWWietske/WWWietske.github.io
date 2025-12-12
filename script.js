@@ -90,7 +90,7 @@ function checkCode() {
     const day = parseInt(document.getElementById("codeInput").dataset.day);
     const resultDiv = document.getElementById("result");
 
-    if (dayData[day] && input === dayData[day].code.toUpperCase()) {
+    if (dayData[day] && input.toUpperCase() === dayData[day].code.toUpperCase()) {
         const nextDay = day + 1;
         const hasNextDay = nextDay <= 24;
 
