@@ -14,10 +14,10 @@ const dayData = {
     18:  { code: "christmas movie",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Welke is jullie favoriet? Onthoud de letter L.",               hint: "Zoek iets lekkers om op te eten..." },
     19:  { code: "5",      symbol: "koekemannetje.png", nextSymbol: "boompjes.png", answer: "Deze puzzel viel wel mee, toch? Onthoud de letter O.",                hint: "Kijk naar kleine boompjes..." },
     20:  { code: "4524",     symbol: "boompjes.png",      nextSymbol: "takjebessen.png", answer: "Knap gedaan! Onthoud de letter B.",            hint: "Zoek rode bessen..." },
-    21:  { code: "sneeuwpop",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "Jammer dat we die niet hebben kunnen maken de afgelopen jaren. Onthoud de letter E.",                     hint: "Houd je handen warm..." },
-    22:  { code: "The Twelve Days of Christmas",    symbol: "wanten.png",       nextSymbol: "muts.png",     answer: "Mooi nummer toch! Onthoud de letter E.",                         hint: "Zet iets op je hoofd..." },
-    23:  { code: "Haha jullie zijn er nog steeds niet",     symbol: "muts.png",          nextSymbol: "cadeau.png",  answer: "Hihi, succes nog eventjes! Onthoud de letter M.",                              hint: "Morgen is het kerst!" },
-    24:  { code: "Open de dubbele bodem",     symbol: "cadeau.png",       nextSymbol: "",           answer: "Gefeliciteerd! Het is tijd om het cadeau'tje te pakken. Zoek goed in de doos 🎄🎁", hint: "" }
+    21:  { code: "SNEEUWPOP",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "Jammer dat we die niet hebben kunnen maken de afgelopen jaren. Onthoud de letter E.",                     hint: "Houd je handen warm..." },
+    22:  { code: "THE TWELVE DAYS OF CHRISTMAS",    symbol: "wanten.png",       nextSymbol: "muts.png",     answer: "Mooi nummer toch! Onthoud de letter E.",                         hint: "Zet iets op je hoofd..." },
+    23:  { code: "HAHA JULLIE ZIJN ER NOG STEEDS NIET",     symbol: "muts.png",          nextSymbol: "cadeau.png",  answer: "Hihi, succes nog eventjes! Onthoud de letter M.",                              hint: "Morgen is het kerst!" },
+    24:  { code: "OPEN DE DUBBELE BODEM",     symbol: "cadeau.png",       nextSymbol: "",           answer: "Gefeliciteerd! Het is tijd om het cadeau'tje te pakken. Zoek goed in de doos 🎄🎁", hint: "" }
 };
 
 // Huidige datum bepalen
