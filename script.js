@@ -11,7 +11,7 @@ const dayData = {
     15:  { code: "VIER EIEREN",   symbol: "ijsbeer.png",      nextSymbol: "pinguin.png",  answer: "Lekker voor het ontbijt zeg. Onthoud de letter E.",                    hint: "Zoek een zwart-wit dier..." },
     16:  { code: "2021",     symbol: "pinguin.png",      nextSymbol: "sneeuwpop.png", answer: "Ahhh de goede ouwe tijd. Onthoud de letter N.",                         hint: "Bouw iets met sneeuw..." },
     17:  { code: "HELAAS NOG GEEN CADEAU VANDAAG JULLIE DOEN GOED JE BEST IEDERE DAG WAT DICHTERBIJ GA ZO DOOR JOE",     symbol: "sneeuwpop.png",    nextSymbol: "vosje.png",    answer: "Sorry voor het hele lange antwoord. Onthoud de letter B.",        hint: "Zoek een sluwe vos..." },
-    18:  { code: "christmas movie",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Welke is jullie favoriet? Onthoud de letter L.",               hint: "Zoek iets lekkers om op te eten..." },
+    18:  { code: "CHRISTMAS MOVIE",     symbol: "vosje.png",        nextSymbol: "koekemannetje.png", answer: "Welke is jullie favoriet? Onthoud de letter L.",               hint: "Zoek iets lekkers om op te eten..." },
     19:  { code: "5",      symbol: "koekemannetje.png", nextSymbol: "boompjes.png", answer: "Deze puzzel viel wel mee, toch? Onthoud de letter O.",                hint: "Kijk naar kleine boompjes..." },
     20:  { code: "4524",     symbol: "boompjes.png",      nextSymbol: "takjebessen.png", answer: "Knap gedaan! Onthoud de letter B.",            hint: "Zoek rode bessen..." },
     21:  { code: "SNEEUWPOP",     symbol: "takjebessen.png",  nextSymbol: "wanten.png",   answer: "Jammer dat we die niet hebben kunnen maken de afgelopen jaren. Onthoud de letter E.",                     hint: "Houd je handen warm..." },
